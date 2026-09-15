@@ -20,6 +20,34 @@
     --border:#E4D9BE;
     --shadow:rgba(22,35,59,0.10);
     --star-line:rgba(165,121,31,0.35);
+  /* ---------- PHOTO ASSETS (data URIs) ---------- */
+  --img-hero:url("/images/riyadh/hero.webp");
+  --img-overview_lobby:url("/images/riyadh/overview_lobby.webp");
+  --img-room1:url("/images/riyadh/room1.webp");
+  --img-room2:url("/images/riyadh/room2.webp");
+  --img-room3:url("/images/riyadh/room3.webp");
+  --img-room4:url("/images/riyadh/room4.webp");
+  --img-room5:url("/images/riyadh/room5.webp");
+  --img-room6:url("/images/riyadh/room6.webp");
+  --img-room7:url("/images/riyadh/room7.webp");
+  --img-room8:url("/images/riyadh/room8.webp");
+  --img-room9:url("/images/riyadh/room9.webp");
+  --img-dine1:url("/images/riyadh/dine1.webp");
+  --img-dine2:url("/images/riyadh/dine2.webp");
+  --img-dine3:url("/images/riyadh/dine3.webp");
+  --img-dine4:url("/images/riyadh/dine4.webp");
+  --img-dine5:url("/images/riyadh/dine5.webp");
+  --img-dine6:url("/images/riyadh/dine6.webp");
+  --img-spa:url("/images/riyadh/spa.webp");
+  --img-gym:url("/images/riyadh/gym.webp");
+  --img-kids:url("/images/riyadh/kids.webp");
+  --img-pool_outdoor:url("/images/riyadh/pool_outdoor.webp");
+  --img-pool_indoor:url("/images/riyadh/pool_indoor.webp");
+  --img-ballroom:url("/images/riyadh/ballroom.webp");
+  --img-diriyah_hall:url("/images/riyadh/diriyah_hall.webp");
+  --img-meeting_room:url("/images/riyadh/meeting_room.webp");
+  --img-garden_terrace:url("/images/riyadh/garden_terrace.webp");
+  --img-rooftop_lounge:url("/images/riyadh/rooftop_lounge.webp");
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -149,7 +177,7 @@
   /* ---------- OVERVIEW ---------- */
   .overview-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
   @media (max-width:820px){ .overview-grid{grid-template-columns:1fr} }
-  .art-panel{background-color:var(--surface-2);
+  .art-panel{
     position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;
     background:
       radial-gradient(120% 90% at 15% 0%, rgba(165,121,31,.35), transparent 55%),
@@ -205,7 +233,7 @@
   /* ---------- CONTACT ---------- */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   @media (max-width:820px){ .contact-grid{grid-template-columns:1fr} }
-  .map-panel{background-color:var(--surface-2);
+  .map-panel{
     aspect-ratio:4/3;border-radius:2px;border:1px solid var(--border);position:relative;overflow:hidden;
     background:linear-gradient(160deg, var(--surface-2), var(--surface));
   }
@@ -244,16 +272,10 @@
     background:linear-gradient(160deg, rgba(15,24,40,.62), rgba(9,15,26,.80));
   }
   .map-panel svg{z-index:2}
-  .mini-photo{background-color:var(--surface-2);width:112px;height:82px;flex:none;border-radius:2px;background-size:cover;background-position:center}
+  .mini-photo{width:112px;height:82px;flex:none;border-radius:2px;background-size:cover;background-position:center}
 </style>
 </head>
 <body>
-
-<div style="background:#16233B;color:#D9D2BE;text-align:center;font-size:12.5px;padding:9px 16px;font-family:'Jost',sans-serif">
-  Lightweight text/branding copy for Drive — see the fully photographed version at
-  <a href="https://claude.ai/code/artifact/a1bac6e8-f7f7-4ee7-ad8a-341cc808a9f7" style="color:#D9AE5C">the live Statler ME site</a>.
-</div>
-
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="wrap nav-inner">
@@ -279,7 +301,7 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="top">
+<section class="hero" id="top" style="background-image:var(--img-hero)">
   <svg class="hero-motif" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <pattern id="star8" width="120" height="120" patternUnits="userSpaceOnUse">
@@ -331,7 +353,7 @@
         <li><span class="k">III.</span><span>The Al Yamamah Ballroom partitions fully for simultaneous, gender-segregated weddings</span></li>
       </ul>
     </div>
-    <div class="art-panel">
+    <div class="art-panel" style="background-image:var(--img-overview_lobby)">
       <div class="art-cap">The Grand Lobby — Statler Tower, Al Olaya District</div>
     </div>
   </div>
@@ -368,55 +390,55 @@
     </div>
     <div class="grid fig">
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room1)"></div>
         <div class="top"><h3>Classic Room</h3><span class="tag">From SAR 1,450</span></div>
         <p>King or twin bed, city view.</p>
         <div class="meta"><span><b>42 sq m</b> / 452 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room2)"></div>
         <div class="top"><h3>Deluxe Room</h3><span class="tag">From SAR 1,750</span></div>
         <p>Higher floor, city or partial skyline view.</p>
         <div class="meta"><span><b>48 sq m</b> / 517 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room3)"></div>
         <div class="top"><h3>Executive Room</h3><span class="tag">From SAR 2,200</span></div>
         <p>Includes Skyline Executive Lounge access on the 40th floor.</p>
         <div class="meta"><span><b>52 sq m</b> / 560 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room4)"></div>
         <div class="top"><h3>Ladies Floor Room</h3><span class="tag">From SAR 1,950</span></div>
         <p>Women- and family-only floor, with dedicated female butler service.</p>
         <div class="meta"><span><b>48 sq m</b> / 517 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room5)"></div>
         <div class="top"><h3>Family Room</h3><span class="tag">From SAR 2,600</span></div>
         <p>Connecting option available; sleeps up to four.</p>
         <div class="meta"><span><b>65 sq m</b> / 700 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room6)"></div>
         <div class="top"><h3>Junior Suite</h3><span class="tag">From SAR 3,400</span></div>
         <p>Separate living area, ideal for extended stays.</p>
         <div class="meta"><span><b>78 sq m</b> / 840 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room7)"></div>
         <div class="top"><h3>Diplomatic Suite</h3><span class="tag">From SAR 5,800</span></div>
         <p>Majlis-style living room, with dining for six.</p>
         <div class="meta"><span><b>110 sq m</b> / 1,184 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room8)"></div>
         <div class="top"><h3>Royal Suite</h3><span class="tag">From SAR 14,000</span></div>
         <p>Private majlis, dining room for twelve, dedicated butler service.</p>
         <div class="meta"><span><b>220 sq m</b> / 2,368 sq ft</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-room9)"></div>
         <div class="top"><h3>Statler Presidential Suite</h3><span class="tag">From SAR 28,000</span></div>
         <p>Private terrace, private hammam, and a dedicated butler team.</p>
         <div class="meta"><span><b>340 sq m</b> / 3,660 sq ft</span></div>
@@ -441,41 +463,41 @@
     </div>
     <div class="grid">
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-dine1)"></div>
         <div class="top"><h3>Al Majlis</h3><span class="tag">Saudi &amp; Najdi</span></div>
         <p>Signature fine dining with a traditional floor-seating majlis room and regional
           tasting menus. Dinner only.</p>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-dine2)"></div>
         <div class="top"><h3>Cedars of Beirut</h3><span class="tag">Lebanese</span></div>
         <p>All-day mezze, grills and Levantine classics in a courtyard-style dining room.</p>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-dine3)"></div>
         <div class="top"><h3>Wagyu &amp; Oud</h3><span class="tag">Steakhouse</span></div>
         <p>Japanese-Arabic fusion steakhouse; dry-aged beef and an oud-smoked tasting menu.
           Dinner only.</p>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-dine4)"></div>
         <div class="top"><h3>Silk Route</h3><span class="tag">Pan-Asian</span></div>
         <p>Chinese, Thai and Japanese sharing plates, with a robata grill.</p>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-dine5)"></div>
         <div class="top"><h3>Al Andalus</h3><span class="tag">International</span></div>
         <p>Breakfast, lunch and dinner — buffet and à la carte, with live cooking stations.</p>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-dine6)"></div>
         <div class="top"><h3>Bait Al Qahwa</h3><span class="tag">Coffee House</span></div>
         <p>Traditional qahwa, dates and pastries, with an outdoor shisha terrace (tobacco only).</p>
       </div>
     </div>
     <div class="policy-grid" style="margin-top:34px">
       <div style="display:flex;gap:16px;align-items:flex-start">
-        <div class="mini-photo"></div>
+        <div class="mini-photo" style="background-image:var(--img-rooftop_lounge)"></div>
         <div>
           <p class="qa q" style="margin-top:0">Zamzam Rooftop Lounge</p>
           <p class="qa a">42nd floor, panoramic skyline views. Specialty mocktails, juices and
@@ -504,7 +526,7 @@
     </div>
     <div class="grid">
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-spa)"></div>
         <div class="top"><h3>Reem Spa &amp; Hammam</h3><span class="tag">9AM–10PM</span></div>
         <p>Separate men's and women's wings, each with a traditional hammam, sauna, steam room
           and relaxation lounge. Signature: Traditional Hammam Ritual, Bukhoor Oil Massage,
@@ -512,13 +534,13 @@
         <div class="meta"><span>Min. age <b>16</b>, accompanied</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-gym)"></div>
         <div class="top"><h3>Statler Fit</h3><span class="tag">24 Hours</span></div>
         <p>Full cardio and strength floor, plus a separate women-only studio with its own
           entrance. Yoga, Pilates, boxing and functional classes; personal training on request.</p>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-kids)"></div>
         <div class="top"><h3>Statler Explorers Club</h3><span class="tag">Ages 4–12</span></div>
         <p>Supervised kids' club with games, arts and crafts and a dedicated children's pool
           session. Complimentary for hotel guests.</p>
@@ -527,13 +549,13 @@
     </div>
     <div class="grid fig" style="margin-top:22px">
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-pool_outdoor)"></div>
         <div class="top"><h3>Rooftop Infinity Pool</h3><span class="tag">Outdoor · 41F</span></div>
         <p>Temperature-controlled, with skyline views and private cabanas.</p>
         <div class="meta"><span><b>6:00 AM–10:00 PM</b> · family hours 6–11 AM · ladies-only 12–3 PM, Sat–Thu</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-pool_indoor)"></div>
         <div class="top"><h3>Reem Indoor Pool</h3><span class="tag">Indoor</span></div>
         <p>Climate-controlled, open year-round, adjoining the spa.</p>
         <div class="meta"><span><b>6:00 AM–10:00 PM</b> · swim lessons by appointment</span></div>
@@ -555,26 +577,26 @@
     </div>
     <div class="grid fig">
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-ballroom)"></div>
         <div class="top"><h3>Al Yamamah Ballroom</h3><span class="tag">1,200 sq m</span></div>
         <p>Pillarless; divides into three sections. A full acoustic partition hosts separate,
           simultaneous men's and women's wedding celebrations, each with independent entrances.</p>
         <div class="meta"><span>Up to <b>1,000</b> reception / <b>700</b> banquet</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-diriyah_hall)"></div>
         <div class="top"><h3>Diriyah Hall</h3><span class="tag">450 sq m</span></div>
         <p>Mid-size ballroom with natural daylight.</p>
         <div class="meta"><span>Up to <b>350</b> guests</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-meeting_room)"></div>
         <div class="top"><h3>Regional Meeting Rooms</h3><span class="tag">8 rooms</span></div>
         <p>Najd, Hijaz, Asir, Tabuk and four further rooms; full AV and video-conferencing.</p>
         <div class="meta"><span><b>30–120 sq m</b> · 10–100 pax</span></div>
       </div>
       <div class="card">
-        <div class="card-photo"></div>
+        <div class="card-photo" style="background-image:var(--img-garden_terrace)"></div>
         <div class="top"><h3>Garden Terrace</h3><span class="tag">800 sq m</span></div>
         <p>Outdoor event lawn with a skyline backdrop.</p>
         <div class="meta"><span>Up to <b>300</b> guests</span></div>
@@ -680,7 +702,7 @@
         </div>
       </div>
     </div>
-    <div class="map-panel">
+    <div class="map-panel" style="background-image:var(--img-hero)">
       <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g stroke="rgba(255,255,255,.22)" stroke-width="1">
           <line x1="0" y1="80" x2="400" y2="80"/>
@@ -725,6 +747,5 @@
     </div>
   </div>
 </footer>
-
 </body>
 </html>
