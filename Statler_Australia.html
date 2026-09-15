@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Statler Australia</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#F5F2E8;
+    --surface:#FFFFFF;
+    --surface-2:#EAE3CE;
+    --ink:#0E2A3D;
+    --ink-soft:#5A7180;
+    --accent:#B8863A;
+    --accent-ink:#FFFFFF;
+    --clay:#2E6E6B;
+    --emerald:#3B6B4A;
+    --border:#DCD0AC;
+    --shadow:rgba(14,42,61,0.12);
+    --star-line:rgba(184,134,58,0.38);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B1B26;
+      --surface:#112532;
+      --surface-2:#163141;
+      --ink:#EFE9D8;
+      --ink-soft:#A9BAC2;
+      --accent:#D9A85C;
+      --accent-ink:#0E2A3D;
+      --clay:#5FADA8;
+      --emerald:#6FAE84;
+      --border:#25404F;
+      --shadow:rgba(0,0,0,0.45);
+      --star-line:rgba(217,168,92,0.30);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1B26;
+    --surface:#112532;
+    --surface-2:#163141;
+    --ink:#EFE9D8;
+    --ink-soft:#A9BAC2;
+    --accent:#D9A85C;
+    --accent-ink:#0E2A3D;
+    --clay:#5FADA8;
+    --emerald:#6FAE84;
+    --border:#25404F;
+    --shadow:rgba(0,0,0,0.45);
+    --star-line:rgba(217,168,92,0.30);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Archivo',ui-sans-serif,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-inline:0;
+  }
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:24px}
+
+  h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:600;text-wrap:balance;margin:0}
+  .eyebrow{
+    font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 10px;
+  }
+  p{color:var(--ink-soft);line-height:1.7;margin:0 0 12px;max-width:62ch}
+  .fig{font-variant-numeric:tabular-nums}
+
+  a{color:inherit}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:2px;
+    font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--accent);color:var(--accent-ink)}
+  .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+  .btn-line{border-color:var(--border);color:var(--ink)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand svg{width:26px;height:26px;flex:none}
+  .brand-word{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:.03em}
+  .brand-word b{color:var(--accent)}
+  nav.links{display:flex;gap:26px;flex-wrap:wrap}
+  nav.links a{
+    font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+    padding-block:4px;border-bottom:1px solid transparent;
+  }
+  nav.links a:hover{color:var(--ink);border-color:var(--accent)}
+  .nav-cta{flex:none}
+  @media (max-width:900px){ nav.links{display:none} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;background:var(--ink);color:#fff;
+    padding-block:96px 84px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(60% 70% at 82% 8%, rgba(184,134,58,.30), transparent 60%),
+      radial-gradient(50% 60% at 8% 92%, rgba(46,110,107,.28), transparent 60%),
+      linear-gradient(175deg, #0E2A3D 0%, #0B2131 62%, #08141F 100%);
+  }
+  .hero-motif{position:absolute;inset:0;z-index:0;opacity:.55}
+  .hero-inner{position:relative;z-index:1}
+  .hero-eyebrow{color:var(--star-line);font-family:'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;font-size:12px;font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:clamp(40px,7vw,74px);line-height:1.02;letter-spacing:.005em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-tag{font-size:16.5px;color:#D6D9CE;max-width:48ch;margin-top:18px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+
+  .facts-strip{
+    position:relative;z-index:1;margin-top:64px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(255,255,255,.16);
+  }
+  .facts-strip div{padding:20px 6px 0;border-left:1px solid rgba(255,255,255,.16)}
+  .facts-strip div:first-child{border-left:none}
+  .facts-strip .num{font-family:'Fraunces',serif;font-size:30px;color:var(--accent)}
+  .facts-strip .lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#AAB6BE;margin-top:4px}
+  @media (max-width:760px){ .facts-strip{grid-template-columns:repeat(2,1fr)} }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding-block:76px}
+  section.alt{background:var(--surface-2)}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px)}
+  .section-head p{margin:8px 0 0}
+
+  /* ---------- OVERVIEW ---------- */
+  .overview-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media (max-width:820px){ .overview-grid{grid-template-columns:1fr} }
+  .art-panel{
+    position:relative;aspect-ratio:4/5;max-width:100%;border-radius:2px;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 15% 0%, rgba(184,134,58,.30), transparent 55%),
+      radial-gradient(90% 70% at 100% 100%, rgba(46,110,107,.30), transparent 55%),
+      linear-gradient(160deg, #123246 0%, #0C2130 70%, #081420 100%);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .art-panel svg.big-icon{width:62%;height:62%;color:var(--star-line);position:relative;z-index:1}
+  .art-cap{position:absolute;left:18px;bottom:16px;right:18px;color:#E7DFC8;font-size:12px;letter-spacing:.05em;z-index:2}
+
+  .kicker-list{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+  .kicker-list li{display:flex;gap:12px;list-style:none;align-items:baseline}
+  .kicker-list .k{color:var(--accent);font-family:'Fraunces',serif;font-size:20px;flex:none;width:1.4em}
+  .kicker-list span{color:var(--ink-soft);font-size:14.5px}
+
+  /* ---------- QUICK FACTS BAR ---------- */
+  .infobar{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden;
+  }
+  .infobar .cell{background:var(--surface);padding:18px 20px}
+  .infobar .cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+  .infobar .cell .v{font-size:14px;color:var(--ink)}
+
+  /* ---------- CARD GRID ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:920px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:620px){ .grid{grid-template-columns:1fr} }
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:2px;
+    padding:24px 22px;display:flex;flex-direction:column;gap:10px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px var(--shadow)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .card h3{font-size:21px}
+  .card .tag{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--clay);font-weight:600;white-space:nowrap}
+  .card .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--border);padding-top:10px;margin-top:auto}
+  .card .meta b{color:var(--ink);font-weight:600}
+  .card p{font-size:13.8px;margin:0}
+
+  .card-photo{
+    aspect-ratio:4/3;max-width:100%;background-color:var(--surface-2);
+    margin:-24px -22px 14px;border-radius:2px 2px 0 0;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card-photo svg{width:36%;height:36%;position:relative;z-index:1}
+  .t1{background:linear-gradient(160deg,#123246 0%,#0B2131 75%)}
+  .t2{background:linear-gradient(160deg,#173B39 0%,#0C2422 75%)}
+  .t3{background:linear-gradient(160deg,#3A2C13 0%,#231A0A 75%)}
+  .t4{background:linear-gradient(160deg,#123246 0%,#173B39 100%)}
+  .t5{background:linear-gradient(160deg,#2A2415 0%,#123246 100%)}
+  .card-photo.t1 svg,.card-photo.t4 svg{color:#8FB4C9}
+  .card-photo.t2 svg{color:#8FCBC0}
+  .card-photo.t3 svg,.card-photo.t5 svg{color:#D9B978}
+
+  .mini-photo{width:112px;height:82px;flex:none;border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .mini-photo svg{width:44%;height:44%;color:#D9B978}
+
+  /* ---------- POLICY / FAQ ---------- */
+  .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  @media (max-width:760px){ .policy-grid{grid-template-columns:1fr} }
+  .policy-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--border)}
+  .policy-row .k{font-size:13.5px;font-weight:600;color:var(--ink);flex:0 0 42%}
+  .policy-row .v{font-size:13.5px;color:var(--ink-soft);text-align:right;flex:1}
+
+  .qa{margin-top:10px}
+  .qa .q{font-size:14.5px;font-weight:600;margin-top:20px;color:var(--ink)}
+  .qa .a{font-size:13.8px;margin-top:4px}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr} }
+  .map-panel{
+    aspect-ratio:4/3;max-width:100%;border-radius:2px;border:1px solid var(--border);position:relative;overflow:hidden;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .map-panel svg.big-icon{position:absolute;inset:0;width:100%;height:100%;color:var(--border);opacity:.7}
+  .map-panel svg.pin{position:relative;z-index:2;width:100%;height:100%}
+
+  footer{background:var(--ink);color:#CBC3AA;padding-block:52px calc(28px + env(safe-area-inset-bottom,0px))}
+  footer .wrap{display:flex;flex-direction:column;gap:22px}
+  footer .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap}
+  footer nav a{font-size:12.5px;text-decoration:none;color:#B3AC93}
+  footer nav a:hover{color:#fff}
+  footer .fine{font-size:11.5px;color:#8A8570;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.6}
+  .brand-foot{display:flex;align-items:center;gap:10px}
+  .brand-foot svg{width:22px;height:22px}
+  .brand-foot span{font-family:'Fraunces',serif;font-size:18px;color:#fff}
+</style>
+</head>
+<body>
+<!-- ============ ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ico-brand" viewBox="0 0 40 40">
+      <circle cx="20" cy="9" r="2.1" fill="currentColor"/>
+      <circle cx="26" cy="16" r="1.5" fill="currentColor"/>
+      <circle cx="13" cy="19" r="1.7" fill="currentColor"/>
+      <circle cx="23" cy="27" r="1.9" fill="currentColor"/>
+      <circle cx="31" cy="31" r="1.3" fill="currentColor"/>
+      <path d="M20 9 L23 27 M20 9 L13 19 M23 27 L31 31" stroke="currentColor" stroke-width=".6" opacity=".5"/>
+    </symbol>
+    <symbol id="ico-bridge" viewBox="0 0 120 60">
+      <path d="M6 46 Q60 4 114 46" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M18 46 V30 M34 46 V22 M50 46 V17 M70 46 V17 M86 46 V22 M102 46 V30" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="0" y1="46" x2="120" y2="46" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M0 54 Q15 50 30 54 T60 54 T90 54 T120 54" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-sails" viewBox="0 0 120 60">
+      <path d="M14 50 C14 30 26 16 40 12 C34 26 30 40 32 50 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M34 50 C34 26 48 10 64 6 C56 22 50 38 52 50 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M54 50 C54 30 66 16 80 12 C74 26 70 40 72 50 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="6" y1="50" x2="112" y2="50" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="ico-customshouse" viewBox="0 0 120 70">
+      <rect x="10" y="30" width="100" height="30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M22 30 v-6 a6 6 0 0 1 12 0 v6 M42 30 v-6 a6 6 0 0 1 12 0 v6 M62 30 v-6 a6 6 0 0 1 12 0 v6 M82 30 v-6 a6 6 0 0 1 12 0 v6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="52" y="6" width="16" height="18" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="60" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="1"/>
+      <line x1="60" y1="6" x2="60" y2="1" stroke="currentColor" stroke-width="1"/>
+      <path d="M0 66 Q20 60 40 66 T80 66 T120 66" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-bed" viewBox="0 0 48 48">
+      <path d="M6 20a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M27 24v-4a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 38V24a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v14" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="4" y1="30" x2="44" y2="30" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="4" y1="38" x2="4" y2="43" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="44" y1="38" x2="44" y2="43" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="ico-lamp" viewBox="0 0 48 48">
+      <use href="#ico-bed"/>
+      <path d="M38 22V12" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M32 12h12l-2 6H34z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="ico-window" viewBox="0 0 48 48">
+      <rect x="8" y="7" width="32" height="30" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="24" y1="7" x2="24" y2="37" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="8" y1="22" x2="40" y2="22" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M12 30q4-3 8 0t8 0 8 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="6" y1="41" x2="42" y2="41" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-brief" viewBox="0 0 48 48">
+      <rect x="7" y="17" width="34" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M18 17v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="7" y1="27" x2="41" y2="27" stroke="currentColor" stroke-width="1.4"/>
+      <rect x="21" y="24" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="ico-twin" viewBox="0 0 48 48">
+      <rect x="4" y="16" width="18" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="26" y="16" width="18" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 26v13M22 26v13M26 26v13M44 26v13" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="4" y1="39" x2="22" y2="39" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="26" y1="39" x2="44" y2="39" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-sofa" viewBox="0 0 48 48">
+      <path d="M6 26v10a3 3 0 0 0 3 3h30a3 3 0 0 0 3-3V26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M6 26a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M13 22v-5a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="9" y1="39" x2="9" y2="43" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="39" y1="39" x2="39" y2="43" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-arch" viewBox="0 0 48 48">
+      <path d="M10 40V20a14 14 0 0 1 28 0v20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="6" y1="40" x2="42" y2="40" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="10" y1="26" x2="38" y2="26" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+      <line x1="16" y1="40" x2="16" y2="26" stroke="currentColor" stroke-width="1" opacity=".7"/>
+      <line x1="32" y1="40" x2="32" y2="26" stroke="currentColor" stroke-width="1" opacity=".7"/>
+    </symbol>
+    <symbol id="ico-balcony" viewBox="0 0 48 48">
+      <path d="M4 32q10-8 20 0t20 0" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="6" y1="20" x2="42" y2="20" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="6" y1="20" x2="6" y2="32" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="14" y1="20" x2="14" y2="32" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+      <line x1="22" y1="20" x2="22" y2="32" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+      <line x1="30" y1="20" x2="30" y2="32" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+      <line x1="38" y1="20" x2="38" y2="32" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+      <line x1="42" y1="20" x2="42" y2="32" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="ico-star" viewBox="0 0 48 48">
+      <polygon points="24,4 29,19 44,19 32,28 36,43 24,34 12,43 16,28 4,19 19,19" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-fork" viewBox="0 0 48 48">
+      <path d="M14 6v14a4 4 0 0 0 8 0V6M18 20v22" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      <path d="M14 6v8M18 6v8M22 6v8" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M34 6c-4 4-4 12 0 16v20" stroke="currentColor" stroke-width="1.6" fill="none"/>
+    </symbol>
+    <symbol id="ico-fish" viewBox="0 0 48 48">
+      <path d="M6 24c8-10 22-10 30 0-8 10-22 10-30 0Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M36 24l8-7v14z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="14" cy="22" r="1.4" fill="currentColor"/>
+      <path d="M18 24q4 3 8 0" stroke="currentColor" stroke-width="1.2" fill="none"/>
+    </symbol>
+    <symbol id="ico-flame" viewBox="0 0 48 48">
+      <path d="M24 6c4 8-4 10-2 18 1 4 5 5 8 3 3-2 3-6 1-9 6 4 9 12 4 19-4 6-13 8-19 3-7-5-8-15-2-22 3-3 6-6 10-12Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="ico-bowl" viewBox="0 0 48 48">
+      <path d="M6 22h36a18 12 0 0 1-36 0Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M12 22c1-6 5-10 12-10s11 4 12 10" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+      <line x1="38" y1="8" x2="34" y2="22" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="42" y1="8" x2="40" y2="22" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-buffet" viewBox="0 0 48 48">
+      <circle cx="18" cy="24" r="13" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="18" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+      <path d="M36 12v24M32 12a4 4 0 0 0 8 0" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-coffee" viewBox="0 0 48 48">
+      <path d="M9 18h24v10a12 12 0 0 1-24 0Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M33 20h4a5 5 0 0 1 0 10h-4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M14 10q2 3 0 5M22 10q2 3 0 5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+      <line x1="6" y1="40" x2="34" y2="40" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-leaf" viewBox="0 0 48 48">
+      <path d="M10 38C6 22 18 8 40 8 40 30 26 42 10 38Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M10 38C18 28 26 20 36 12" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+    </symbol>
+    <symbol id="ico-dumbbell" viewBox="0 0 48 48">
+      <line x1="10" y1="24" x2="38" y2="24" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="4" y="17" width="7" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="37" y="17" width="7" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="12" y="20" width="4" height="8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <rect x="32" y="20" width="4" height="8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    </symbol>
+    <symbol id="ico-kite" viewBox="0 0 48 48">
+      <path d="M24 6l14 14-14 22-14-22Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="10" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+      <path d="M24 42q4 3 2 6" stroke="currentColor" stroke-width="1.3" fill="none"/>
+    </symbol>
+    <symbol id="ico-sunwave" viewBox="0 0 48 48">
+      <circle cx="24" cy="16" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 32q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 40q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-wave" viewBox="0 0 48 48">
+      <path d="M4 20q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 28q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 36q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-chandelier" viewBox="0 0 48 48">
+      <path d="M24 4v6" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M10 16h28l-4 8H14Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="16" y1="24" x2="14" y2="34" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="24" y1="24" x2="24" y2="36" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="32" y1="24" x2="34" y2="34" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="14" cy="36" r="2" fill="currentColor"/>
+      <circle cx="24" cy="38" r="2" fill="currentColor"/>
+      <circle cx="34" cy="36" r="2" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-table" viewBox="0 0 48 48">
+      <ellipse cx="24" cy="24" rx="16" ry="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="10" cy="24" r="2.3" fill="currentColor"/>
+      <circle cx="24" cy="15" r="2.3" fill="currentColor"/>
+      <circle cx="38" cy="24" r="2.3" fill="currentColor"/>
+      <circle cx="24" cy="33" r="2.3" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-tree" viewBox="0 0 48 48">
+      <path d="M24 6c8 0 12 6 12 12 0 8-6 10-6 10h-12s-6-2-6-10c0-6 4-12 12-12Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="24" y1="28" x2="24" y2="42" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="6" y1="42" x2="42" y2="42" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="ico-compass" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M31 17l-5 10-10 5 5-10Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="24" cy="24" r="1.6" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#ico-brand" style="color:var(--accent)"/></svg>
+      <span class="brand-word">STATLER <b>AU</b></span>
+    </a>
+    <nav class="links">
+      <a href="#overview">Overview</a>
+      <a href="#rooms">Rooms &amp; Suites</a>
+      <a href="#dining">Dining</a>
+      <a href="#wellness">Wellness &amp; Pools</a>
+      <a href="#events">Meetings &amp; Weddings</a>
+      <a href="#offers">Offers</a>
+      <a href="#policies">Policies &amp; FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-line nav-cta" href="#contact">Enquire</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <svg class="hero-motif" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g transform="translate(60,120) scale(7)" opacity=".9"><use href="#ico-bridge" stroke="var(--star-line)"/></g>
+    <g transform="translate(620,60) scale(6.2)" opacity=".85"><use href="#ico-sails" stroke="var(--star-line)"/></g>
+    <g stroke="var(--star-line)" stroke-width="1.2" fill="none" opacity=".8">
+      <path d="M0 470q40-26 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0"/>
+      <path d="M0 520q40-26 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0"/>
+      <path d="M0 570q40-26 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Sydney · New South Wales, Australia</div>
+    <h1>Where the harbour<br><em>meets the stone.</em></h1>
+    <p class="hero-tag">Statler Australia rises from a restored 1890s sandstone customs house at Circular
+      Quay — 284 rooms and suites, five restaurants, a rooftop infinity pool facing the Harbour
+      Bridge, and a bathhouse built on the ritual of bathing, within a heritage-listed building
+      reimagined for the twenty-first century.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="#rooms">Explore Rooms &amp; Suites</a>
+      <a class="btn btn-ghost" href="#contact">Reservations</a>
+    </div>
+    <div class="facts-strip fig">
+      <div><div class="num">284</div><div class="lbl">Rooms &amp; Suites</div></div>
+      <div><div class="num">5</div><div class="lbl">Restaurants</div></div>
+      <div><div class="num">2</div><div class="lbl">Pools, In &amp; Out</div></div>
+      <div><div class="num">18</div><div class="lbl">Floors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+  <div class="wrap overview-grid">
+    <div>
+      <p class="eyebrow">The Hotel</p>
+      <h2 style="font-size:clamp(28px,3.6vw,38px);margin-bottom:16px">A heritage customs house, eighteen storeys above the harbour</h2>
+      <p>Statler Australia occupies the restored Customs House on Circular Quay, its 1890s
+        Pyrmont-sandstone façade preserved beneath a contemporary glass tower added in 2021.
+        The design pairs the building's original ironbark beams and stone arches with brass,
+        eucalyptus timber and quartz — a deliberate conversation between the colonial-era wharf
+        and the harbour skyline it now overlooks.</p>
+      <p>The lobby hosts a rotating exhibition of contemporary Australian art, developed in
+        partnership with Sydney galleries and First Nations–owned art centres; works are
+        available through the hotel's concierge.</p>
+      <ul class="kicker-list">
+        <li><span class="k">I.</span><span>A heritage-listed sandstone façade preserved beneath a full glass tower addition</span></li>
+        <li><span class="k">II.</span><span>A rooftop infinity pool facing the Sydney Harbour Bridge and Opera House</span></li>
+        <li><span class="k">III.</span><span>A private jetty for water-taxi and harbour-cruise arrivals</span></li>
+      </ul>
+    </div>
+    <div class="art-panel">
+      <svg class="big-icon" viewBox="0 0 120 70"><use href="#ico-customshouse"/></svg>
+      <div class="art-cap">The Customs House Lobby — Circular Quay</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK FACTS ============ -->
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow">At a Glance</p>
+    <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:28px">Hotel information</h2>
+    <div class="infobar fig">
+      <div class="cell"><div class="k">Address</div><div class="v">1 Customs House Lane, Circular Quay, Sydney NSW 2000, Australia</div></div>
+      <div class="cell"><div class="k">Phone</div><div class="v">+61 2 8296 0100</div></div>
+      <div class="cell"><div class="k">Reservations</div><div class="v">reservations@statleraustralia.com.au</div></div>
+      <div class="cell"><div class="k">Check-in</div><div class="v">3:00 PM (15:00)</div></div>
+      <div class="cell"><div class="k">Check-out</div><div class="v">11:00 AM</div></div>
+      <div class="cell"><div class="k">Currency</div><div class="v">Australian Dollar (AUD)</div></div>
+      <div class="cell"><div class="k">WiFi</div><div class="v">Complimentary throughout</div></div>
+      <div class="cell"><div class="k">Nearest airport</div><div class="v">Sydney Kingsford Smith (SYD), ~9 km</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROOMS & SUITES ============ -->
+<section id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Accommodation</p>
+        <h2>Rooms &amp; Suites</h2>
+        <p>284 rooms and suites in total. Rates shown are indicative starting rates in
+          Australian Dollars (AUD), exclusive of GST, and vary by season.</p>
+      </div>
+    </div>
+    <div class="grid fig">
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-bed"/></svg></div>
+        <div class="top"><h3>Classic Room</h3><span class="tag">From AUD 420</span></div>
+        <p>King or twin bed, city view.</p>
+        <div class="meta"><span><b>32 sq m</b> / 344 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-lamp"/></svg></div>
+        <div class="top"><h3>Deluxe Room</h3><span class="tag">From AUD 480</span></div>
+        <p>Higher floor, partial harbour glimpse.</p>
+        <div class="meta"><span><b>36 sq m</b> / 387 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-window"/></svg></div>
+        <div class="top"><h3>Harbour View Room</h3><span class="tag">From AUD 640</span></div>
+        <p>Full harbour views toward the Bridge or Opera House.</p>
+        <div class="meta"><span><b>38 sq m</b> / 409 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t3"><svg><use href="#ico-brief"/></svg></div>
+        <div class="top"><h3>Executive Room</h3><span class="tag">From AUD 720</span></div>
+        <p>Includes Lookout Executive Lounge access on the 17th floor.</p>
+        <div class="meta"><span><b>42 sq m</b> / 452 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-twin"/></svg></div>
+        <div class="top"><h3>Family Room</h3><span class="tag">From AUD 780</span></div>
+        <p>Connecting option available; sleeps up to four.</p>
+        <div class="meta"><span><b>55 sq m</b> / 592 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-sofa"/></svg></div>
+        <div class="top"><h3>Junior Suite</h3><span class="tag">From AUD 980</span></div>
+        <p>Separate living area, ideal for extended stays.</p>
+        <div class="meta"><span><b>62 sq m</b> / 667 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t5"><svg><use href="#ico-arch"/></svg></div>
+        <div class="top"><h3>Sandstone Heritage Suite</h3><span class="tag">From AUD 1,450</span></div>
+        <p>Set within the original 1890s customs house — exposed sandstone and ironbark beams.</p>
+        <div class="meta"><span><b>74 sq m</b> / 796 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t4"><svg><use href="#ico-balcony"/></svg></div>
+        <div class="top"><h3>Harbour Suite</h3><span class="tag">From AUD 2,100</span></div>
+        <p>Wraparound terrace facing the Bridge and Opera House.</p>
+        <div class="meta"><span><b>96 sq m</b> / 1,033 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t3"><svg><use href="#ico-star"/></svg></div>
+        <div class="top"><h3>Statler Presidential Suite</h3><span class="tag">From AUD 6,200</span></div>
+        <p>Private terrace, plunge pool, and a dedicated butler team.</p>
+        <div class="meta"><span><b>210 sq m</b> / 2,260 sq ft</span></div>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:13.5px"><b style="color:var(--ink)">Lookout Executive Lounge</b> — 17th floor,
+      for Executive Room and above and Statler Privé Gold/Platinum members: complimentary
+      breakfast, all-day refreshments, evening canapés and wine, and a private meeting room.</p>
+  </div>
+</section>
+
+<!-- ============ DINING ============ -->
+<section class="alt" id="dining">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Dining</p>
+        <h2>Five Restaurants, One Harbour</h2>
+        <p>From the original customs hall to the water's edge — modern Australian, seafood,
+          steak, pan-Asian and all-day dining.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-fork"/></svg></div>
+        <div class="top"><h3>Customs House Grill</h3><span class="tag">Modern Australian</span></div>
+        <p>Signature fine dining in the original customs hall, built around Australian
+          seafood and native ingredients. Dinner only.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-fish"/></svg></div>
+        <div class="top"><h3>Wharfside</h3><span class="tag">Seafood, All-Day</span></div>
+        <p>All-day dining on the water's edge — seafood, salads and wood-fired classics with
+          harbour views.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo t3"><svg><use href="#ico-flame"/></svg></div>
+        <div class="top"><h3>Ember &amp; Ironbark</h3><span class="tag">Steakhouse</span></div>
+        <p>Grass-fed and Wagyu beef over an ironbark char grill, with a native-botanicals bar.
+          Dinner only.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-bowl"/></svg></div>
+        <div class="top"><h3>Lantern Lane</h3><span class="tag">Pan-Asian</span></div>
+        <p>Chinese, Japanese and Vietnamese sharing plates, with a robata grill.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-buffet"/></svg></div>
+        <div class="top"><h3>The Long Table</h3><span class="tag">International</span></div>
+        <p>Breakfast, lunch and dinner — buffet and à la carte, with live cooking stations.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo t3"><svg><use href="#ico-coffee"/></svg></div>
+        <div class="top"><h3>Customs &amp; Co.</h3><span class="tag">Coffee House</span></div>
+        <p>Specialty coffee, pastries and an all-day wine bar, spilling onto the quay.</p>
+      </div>
+    </div>
+    <div class="policy-grid" style="margin-top:34px">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div class="mini-photo t5"><svg><use href="#ico-compass"/></svg></div>
+        <div>
+          <p class="qa q" style="margin-top:0">The Lookout Rooftop Bar</p>
+          <p class="qa a">18th floor, facing the Harbour Bridge and Opera House. Native-botanical
+            cocktails, local wines and share plates. Daily, 12:00 PM – midnight.</p>
+        </div>
+      </div>
+      <div>
+        <p class="qa q" style="margin-top:0">In-Room Dining</p>
+        <p class="qa a">Available 24 hours from a menu spanning all five restaurants, plus a
+          dedicated children's menu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WELLNESS & POOLS ============ -->
+<section id="wellness">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Wellness</p>
+        <h2>Spa, Fitness &amp; Pools</h2>
+        <p>Wattle Bathhouse &amp; Spa, Statler Fit, and two pools — indoor and a rooftop
+          infinity pool over the harbour.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-leaf"/></svg></div>
+        <div class="top"><h3>Wattle Bathhouse &amp; Spa</h3><span class="tag">9AM–9PM</span></div>
+        <p>A hydrotherapy circuit, sauna, steam room and relaxation lounge overlooking a
+          private garden. Signature: Native Botanicals Massage, Sandstone Hot Stone Ritual,
+          Bridal Ritual.</p>
+        <div class="meta"><span>Min. age <b>16</b>, accompanied</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-dumbbell"/></svg></div>
+        <div class="top"><h3>Statler Fit</h3><span class="tag">24 Hours</span></div>
+        <p>Full cardio and strength floor with harbour views. Yoga, Pilates, boxing and
+          functional classes; personal training on request.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo t3"><svg><use href="#ico-kite"/></svg></div>
+        <div class="top"><h3>Little Explorers Club</h3><span class="tag">Ages 4–12</span></div>
+        <p>Supervised kids' club with games, craft and a dedicated splash session.
+          Complimentary for hotel guests.</p>
+        <div class="meta"><span><b>9:00 AM – 6:00 PM</b> daily</span></div>
+      </div>
+    </div>
+    <div class="grid fig" style="margin-top:22px">
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-sunwave"/></svg></div>
+        <div class="top"><h3>Rooftop Infinity Pool</h3><span class="tag">Outdoor · 28°C</span></div>
+        <p>Heated year-round, facing the Harbour Bridge, with private cabanas.</p>
+        <div class="meta"><span><b>6:00 AM–9:00 PM</b> · family hours 6–10 AM</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-wave"/></svg></div>
+        <div class="top"><h3>Wattle Indoor Pool</h3><span class="tag">Indoor</span></div>
+        <p>Climate-controlled, open year-round, adjoining the spa.</p>
+        <div class="meta"><span><b>6:00 AM–9:00 PM</b> · swim lessons by appointment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEETINGS & WEDDINGS ============ -->
+<section class="alt" id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Meetings &amp; Weddings</p>
+        <h2>Sydney's Grandest Harbourside Ballroom</h2>
+        <p>Anchored by the pillarless Customs House Ballroom, with a mid-size hall, six
+          meeting rooms and an outdoor lawn on the water.</p>
+      </div>
+    </div>
+    <div class="grid fig">
+      <div class="card">
+        <div class="card-photo t5"><svg><use href="#ico-chandelier"/></svg></div>
+        <div class="top"><h3>Customs House Ballroom</h3><span class="tag">900 sq m</span></div>
+        <p>Pillarless, with full-height harbour-facing windows; divides into three sections.</p>
+        <div class="meta"><span>Up to <b>800</b> reception / <b>550</b> banquet</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-window"/></svg></div>
+        <div class="top"><h3>Bridge Hall</h3><span class="tag">340 sq m</span></div>
+        <p>Mid-size ballroom with natural daylight and Bridge views.</p>
+        <div class="meta"><span>Up to <b>260</b> guests</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t4"><svg><use href="#ico-table"/></svg></div>
+        <div class="top"><h3>Harbour Meeting Rooms</h3><span class="tag">6 rooms</span></div>
+        <p>The Rocks, Paddington, Manly, Bondi, Balmain and Watsons Bay rooms; full AV and
+          video-conferencing.</p>
+        <div class="meta"><span><b>24–90 sq m</b> · 8–80 pax</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-tree"/></svg></div>
+        <div class="top"><h3>Macquarie Lawn</h3><span class="tag">600 sq m</span></div>
+        <p>Outdoor event lawn on the water's edge, with a Bridge and Opera House backdrop.</p>
+        <div class="meta"><span>Up to <b>220</b> guests</span></div>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:13.5px;max-width:70ch">
+      <b style="color:var(--ink)">Weddings</b> — a dedicated bridal suite, the Bridal Ritual spa
+      package, and custom harbourside catering are available for both halls. Contact
+      <b style="color:var(--ink)"> +61 2 8296 0100</b> or <b style="color:var(--ink)">events@statleraustralia.com.au</b>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ OFFERS ============ -->
+<section id="offers">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Offers</p>
+        <h2>Packages &amp; Experiences</h2>
+        <p>Indicative rates as of September 2026, subject to change and availability.</p>
+      </div>
+    </div>
+    <div class="grid fig">
+      <div class="card">
+        <div class="top"><h3>Vivid Sydney Escape</h3><span class="tag">From AUD 780</span></div>
+        <p>Vivid Sydney festival viewing from The Lookout, breakfast, late check-out.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Harbour Romance</h3><span class="tag">From AUD 980</span></div>
+        <p>Sparkling on arrival, sunset harbour cruise, private dinner at Customs House Grill.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Business Traveller</h3><span class="tag">From AUD 820</span></div>
+        <p>Executive Lounge access, airport transfer, in-suite meeting setup.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Winter in the City</h3><span class="tag">From AUD 650</span></div>
+        <p>Spa credit and a Southern Highlands day trip with a fireside lunch.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Statler Honeymoon</h3><span class="tag">From AUD 1,850</span></div>
+        <p>Harbour Suite upgrade (subject to availability), rose turndown, private dinner at
+          Customs House Grill.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Family Summer Holidays</h3><span class="tag">From AUD 720</span></div>
+        <p>Connecting Family Room, Little Explorers Club, breakfast for the family.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLICIES & FAQ ============ -->
+<section class="alt" id="policies">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Good to Know</p>
+        <h2>Policies &amp; FAQ</h2>
+      </div>
+    </div>
+    <div class="policy-grid fig">
+      <div>
+        <div class="policy-row"><div class="k">Check-in / Check-out</div><div class="v">3:00 PM / 11:00 AM</div></div>
+        <div class="policy-row"><div class="k">Minimum check-in age</div><div class="v">18</div></div>
+        <div class="policy-row"><div class="k">Unmarried couples</div><div class="v">Welcome</div></div>
+        <div class="policy-row"><div class="k">Cancellation (flexible)</div><div class="v">Free up to 48h before arrival</div></div>
+        <div class="policy-row"><div class="k">Alcohol</div><div class="v">Fully licensed, served throughout</div></div>
+        <div class="policy-row"><div class="k">Pets</div><div class="v">Small pets welcome in select rooms (fee applies)</div></div>
+        <div class="policy-row" style="border-bottom:none"><div class="k">Smoking</div><div class="v">Indoors prohibited; outdoor terrace available</div></div>
+      </div>
+      <div class="qa">
+        <p class="q" style="margin-top:0">Is breakfast included?</p>
+        <p class="a">Not by default. À la carte or a breakfast package from AUD 55/guest;
+          included in select packages.</p>
+        <p class="q">Is room service available?</p>
+        <p class="a">Yes — 24 hours, from all five restaurant menus.</p>
+        <p class="q">Does the hotel have a loyalty programme?</p>
+        <p class="a">Yes — Statler Privé (Silver, Gold, Platinum, Statler Elite), free to join.</p>
+        <p class="q">Is the hotel wheelchair accessible?</p>
+        <p class="a">Yes — accessible rooms, lifts and harbour-level access throughout;
+          please advise the hotel in advance of any specific requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Find Us</p>
+      <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:18px">Circular Quay, Sydney</h2>
+      <p>1 Customs House Lane, Circular Quay, Sydney NSW 2000, Australia.</p>
+      <div class="policy-grid" style="grid-template-columns:1fr">
+        <div>
+          <div class="policy-row"><div class="k">Phone</div><div class="v">+61 2 8296 0100</div></div>
+          <div class="policy-row"><div class="k">Reservations</div><div class="v">reservations@statleraustralia.com.au</div></div>
+          <div class="policy-row"><div class="k">Concierge</div><div class="v">concierge@statleraustralia.com.au</div></div>
+          <div class="policy-row"><div class="k">Events &amp; Weddings</div><div class="v">events@statleraustralia.com.au</div></div>
+          <div class="policy-row" style="border-bottom:none"><div class="k">Nearest airport</div><div class="v">Sydney Kingsford Smith (SYD), ~20–30 min</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="map-panel">
+      <svg class="big-icon" viewBox="0 0 120 70" preserveAspectRatio="xMidYMid slice"><use href="#ico-customshouse"/></svg>
+      <svg class="pin" viewBox="0 0 400 300" aria-hidden="true">
+        <g stroke="var(--border)" stroke-width="1">
+          <line x1="0" y1="80" x2="400" y2="80"/>
+          <line x1="0" y1="170" x2="400" y2="170"/>
+          <line x1="120" y1="0" x2="120" y2="300"/>
+          <line x1="280" y1="0" x2="280" y2="300"/>
+        </g>
+        <circle cx="200" cy="130" r="7" fill="var(--accent)"/>
+        <circle cx="200" cy="130" r="16" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".55"/>
+        <text x="212" y="126" font-family="Archivo, sans-serif" font-size="11" fill="var(--ink)">Customs House</text>
+        <text x="212" y="140" font-family="Archivo, sans-serif" font-size="10" fill="var(--ink-soft)">Circular Quay, Sydney</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand-foot">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#ico-brand" style="color:#D9A85C"/></svg>
+        <span>Statler Australia, Sydney</span>
+      </div>
+      <nav>
+        <a href="#rooms">Rooms &amp; Suites</a>
+        <a href="#dining">Dining</a>
+        <a href="#wellness">Wellness &amp; Pools</a>
+        <a href="#events">Meetings &amp; Weddings</a>
+        <a href="#policies">Policies &amp; FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="fine">
+      Fictional demonstration property, created for internal software testing (Canary
+      compendium / knowledge-base workflows). Statler Australia does not exist; all names,
+      addresses, contact details and rates on this page are invented and should never be
+      treated as real. © 2026 Statler Hotels — demo content only.
+    </div>
+  </div>
+</footer>
+</body>
+</html>
