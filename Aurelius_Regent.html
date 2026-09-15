@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Aurelius Regent</title>
+<link rel="preload" as="image" href="/images/aurelius/hero.webp">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#F6F3EA;
+    --surface:#FFFFFF;
+    --surface-2:#ECE6D4;
+    --ink:#17301F;
+    --ink-soft:#5C6E5F;
+    --accent:#B8863A;
+    --accent-ink:#FFFFFF;
+    --clay:#1D6F72;
+    --emerald:#2F6B4A;
+    --border:#DAD2AF;
+    --shadow:rgba(23,48,31,0.14);
+    --star-line:rgba(184,134,58,0.40);
+    --img-hero:url("/images/aurelius/hero.webp");
+    --img-cabana:url("/images/aurelius/cabana.webp");
+    --img-kids:url("/images/aurelius/kids.webp");
+    --img-spa:url("/images/aurelius/spa.webp");
+    --img-dine1:url("/images/aurelius/dine1.webp");
+    --img-dine2:url("/images/aurelius/dine2.webp");
+    --img-dine3:url("/images/aurelius/dine3.webp");
+    --img-dine4:url("/images/aurelius/dine4.webp");
+    --img-dine5:url("/images/aurelius/dine5.webp");
+    --img-dine6:url("/images/aurelius/dine6.webp");
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1B12;
+      --surface:#132417;
+      --surface-2:#183020;
+      --ink:#EEEAD9;
+      --ink-soft:#AFC0AF;
+      --accent:#D9A85C;
+      --accent-ink:#17301F;
+      --clay:#5FADA8;
+      --emerald:#6FAE84;
+      --border:#274031;
+      --shadow:rgba(0,0,0,0.45);
+      --star-line:rgba(217,168,92,0.30);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1B12;
+    --surface:#132417;
+    --surface-2:#183020;
+    --ink:#EEEAD9;
+    --ink-soft:#AFC0AF;
+    --accent:#D9A85C;
+    --accent-ink:#17301F;
+    --clay:#5FADA8;
+    --emerald:#6FAE84;
+    --border:#274031;
+    --shadow:rgba(0,0,0,0.45);
+    --star-line:rgba(217,168,92,0.30);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Archivo',ui-sans-serif,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-inline:0;
+  }
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:24px}
+
+  h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:600;text-wrap:balance;margin:0}
+  .eyebrow{
+    font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 10px;
+  }
+  p{color:var(--ink-soft);line-height:1.7;margin:0 0 12px;max-width:62ch}
+  .fig{font-variant-numeric:tabular-nums}
+
+  a{color:inherit}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:2px;
+    font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--accent);color:var(--accent-ink)}
+  .btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}
+  .btn-line{border-color:var(--border);color:var(--ink)}
+
+  header.nav{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand svg{width:26px;height:26px;flex:none}
+  .brand-word{font-family:'Fraunces',serif;font-weight:600;font-size:18px;letter-spacing:.03em}
+  .brand-word b{color:var(--accent);font-weight:600}
+  nav.links{display:flex;gap:24px;flex-wrap:wrap}
+  nav.links a{
+    font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+    padding-block:4px;border-bottom:1px solid transparent;
+  }
+  nav.links a:hover{color:var(--ink);border-color:var(--accent)}
+  .nav-cta{flex:none}
+  @media (max-width:960px){ nav.links{display:none} }
+
+  .hero{
+    position:relative;overflow:hidden;background:var(--ink);color:#fff;
+    padding-block:100px 84px;
+    background-image:var(--img-hero);background-size:cover;background-position:center 40%;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(175deg, rgba(14,27,18,.92) 0%, rgba(12,23,15,.86) 55%, rgba(9,17,11,.94) 100%),
+      radial-gradient(60% 70% at 82% 8%, rgba(184,134,58,.22), transparent 60%);
+  }
+  .hero-motif{position:absolute;inset:0;z-index:0;opacity:.5}
+  .hero-inner{position:relative;z-index:1}
+  .hero-eyebrow{color:var(--star-line);font-family:'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;font-size:12px;font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:clamp(38px,6.6vw,70px);line-height:1.03;letter-spacing:.005em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-tag{font-size:16.5px;color:#DCE3D6;max-width:50ch;margin-top:18px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+
+  .facts-strip{
+    position:relative;z-index:1;margin-top:64px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .facts-strip div{padding:20px 6px 0;border-left:1px solid rgba(255,255,255,.18)}
+  .facts-strip div:first-child{border-left:none}
+  .facts-strip .num{font-family:'Fraunces',serif;font-size:30px;color:var(--accent)}
+  .facts-strip .lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#B9C2B4;margin-top:4px}
+  @media (max-width:760px){ .facts-strip{grid-template-columns:repeat(2,1fr)} }
+
+  section{padding-block:76px}
+  section.alt{background:var(--surface-2)}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px)}
+  .section-head p{margin:8px 0 0}
+
+  .overview-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media (max-width:820px){ .overview-grid{grid-template-columns:1fr} }
+  .art-panel{
+    position:relative;aspect-ratio:4/5;max-width:100%;border-radius:2px;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 15% 0%, rgba(184,134,58,.28), transparent 55%),
+      radial-gradient(90% 70% at 100% 100%, rgba(29,111,114,.30), transparent 55%),
+      linear-gradient(160deg, #143521 0%, #0E2417 70%, #081810 100%);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    background-size:cover;background-position:center;
+  }
+  .art-panel svg.big-icon{width:58%;height:58%;color:var(--star-line);position:relative;z-index:1}
+  .art-cap{position:absolute;left:18px;bottom:16px;right:18px;color:#E8E2C9;font-size:12px;letter-spacing:.05em;z-index:2}
+
+  .kicker-list{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+  .kicker-list li{display:flex;gap:12px;list-style:none;align-items:baseline}
+  .kicker-list .k{color:var(--accent);font-family:'Fraunces',serif;font-size:20px;flex:none;width:1.4em}
+  .kicker-list span{color:var(--ink-soft);font-size:14.5px}
+
+  .infobar{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden;
+  }
+  .infobar .cell{background:var(--surface);padding:18px 20px}
+  .infobar .cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+  .infobar .cell .v{font-size:14px;color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:920px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:620px){ .grid{grid-template-columns:1fr} }
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:2px;
+    padding:24px 22px;display:flex;flex-direction:column;gap:10px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px var(--shadow)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .card h3{font-size:21px}
+  .card .tag{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--clay);font-weight:600;white-space:nowrap}
+  .card .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--border);padding-top:10px;margin-top:auto}
+  .card .meta b{color:var(--ink);font-weight:600}
+  .card p{font-size:13.8px;margin:0}
+
+  .card-photo{
+    aspect-ratio:4/3;max-width:100%;background-color:var(--surface-2);
+    margin:-24px -22px 14px;border-radius:2px 2px 0 0;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background-size:cover;background-position:center;
+  }
+  .card-photo svg{width:36%;height:36%;position:relative;z-index:1}
+  .t1{background:linear-gradient(160deg,#143521 0%,#0B2415 75%)}
+  .t2{background:linear-gradient(160deg,#123B3B 0%,#0B2422 75%)}
+  .t3{background:linear-gradient(160deg,#3A2C13 0%,#231A0A 75%)}
+  .t4{background:linear-gradient(160deg,#143521 0%,#123B3B 100%)}
+  .t5{background:linear-gradient(160deg,#2A2415 0%,#143521 100%)}
+  .card-photo.t1 svg,.card-photo.t4 svg{color:#8FCBA6}
+  .card-photo.t2 svg{color:#8FCBC0}
+  .card-photo.t3 svg,.card-photo.t5 svg{color:#D9B978}
+
+  .mini-photo{width:112px;height:82px;flex:none;border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
+  .mini-photo svg{width:44%;height:44%;color:#D9B978}
+
+  .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  @media (max-width:760px){ .policy-grid{grid-template-columns:1fr} }
+  .policy-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--border)}
+  .policy-row .k{font-size:13.5px;font-weight:600;color:var(--ink);flex:0 0 42%}
+  .policy-row .v{font-size:13.5px;color:var(--ink-soft);text-align:right;flex:1}
+
+  .qa{margin-top:10px}
+  .qa .q{font-size:14.5px;font-weight:600;margin-top:20px;color:var(--ink)}
+  .qa .a{font-size:13.8px;margin-top:4px}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr} }
+  .map-panel{
+    aspect-ratio:4/3;max-width:100%;border-radius:2px;border:1px solid var(--border);position:relative;overflow:hidden;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .map-panel svg.big-icon{position:absolute;inset:0;width:100%;height:100%;color:var(--border);opacity:.7}
+  .map-panel svg.pin{position:relative;z-index:2;width:100%;height:100%}
+
+  footer{background:var(--ink);color:#CDD6C6;padding-block:52px calc(28px + env(safe-area-inset-bottom,0px))}
+  footer .wrap{display:flex;flex-direction:column;gap:22px}
+  footer .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap}
+  footer nav a{font-size:12.5px;text-decoration:none;color:#B4BCA9}
+  footer nav a:hover{color:#fff}
+  footer .fine{font-size:11.5px;color:#8B9481;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.6}
+  .brand-foot{display:flex;align-items:center;gap:10px}
+  .brand-foot svg{width:22px;height:22px}
+  .brand-foot span{font-family:'Fraunces',serif;font-size:18px;color:#fff}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ico-crown" viewBox="0 0 40 40">
+      <path d="M6 28 L10 14 L17 22 L20 10 L23 22 L30 14 L34 28 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <line x1="6" y1="28" x2="34" y2="28" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="ico-palm" viewBox="0 0 120 70">
+      <path d="M60 66V38" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M60 38c-4-10-16-14-26-12 6 8 16 10 26 12Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M60 38c4-10 16-14 26-12-6 8-16 10-26 12Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M60 36c-2-12-12-18-22-18 4 10 12 15 22 18Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M60 36c2-12 12-18 22-18-4 10-12 15-22 18Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M60 34c0-13-6-20-8-24" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M0 66q20-6 40 0t40 0 40 0" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-pavilion" viewBox="0 0 120 70">
+      <path d="M8 34 L60 10 L112 34Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <line x1="20" y1="34" x2="20" y2="58" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="46" y1="34" x2="46" y2="58" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="74" y1="34" x2="74" y2="58" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="100" y1="34" x2="100" y2="58" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="10" y1="58" x2="110" y2="58" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M0 66q20-6 40 0t40 0 40 0" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-bed" viewBox="0 0 48 48">
+      <path d="M6 20a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M27 24v-4a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 38V24a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v14" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="4" y1="30" x2="44" y2="30" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="4" y1="38" x2="4" y2="43" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="44" y1="38" x2="44" y2="43" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="ico-lamp" viewBox="0 0 48 48">
+      <use href="#ico-bed"/>
+      <path d="M38 22V12" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M32 12h12l-2 6H34z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="ico-window" viewBox="0 0 48 48">
+      <rect x="8" y="7" width="32" height="30" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="24" y1="7" x2="24" y2="37" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="8" y1="22" x2="40" y2="22" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M12 30q4-3 8 0t8 0 8 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="6" y1="41" x2="42" y2="41" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-twin" viewBox="0 0 48 48">
+      <rect x="4" y="16" width="18" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="26" y="16" width="18" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 26v13M22 26v13M26 26v13M44 26v13" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="4" y1="39" x2="22" y2="39" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="26" y1="39" x2="44" y2="39" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-sofa" viewBox="0 0 48 48">
+      <path d="M6 26v10a3 3 0 0 0 3 3h30a3 3 0 0 0 3-3V26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M6 26a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M13 22v-5a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="9" y1="39" x2="9" y2="43" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="39" y1="39" x2="39" y2="43" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-plunge" viewBox="0 0 48 48">
+      <circle cx="34" cy="10" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 30h40v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 30q4-6 10-6t10 6 10-6 10 6" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
+    </symbol>
+    <symbol id="ico-star" viewBox="0 0 48 48">
+      <polygon points="24,4 29,19 44,19 32,28 36,43 24,34 12,43 16,28 4,19 19,19" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="ico-dumbbell" viewBox="0 0 48 48">
+      <line x1="10" y1="24" x2="38" y2="24" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="4" y="17" width="7" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="37" y="17" width="7" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="12" y="20" width="4" height="8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <rect x="32" y="20" width="4" height="8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    </symbol>
+    <symbol id="ico-wave" viewBox="0 0 48 48">
+      <path d="M4 20q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 28q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 36q5-5 10 0t10 0 10 0 10 0" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+    </symbol>
+    <symbol id="ico-table" viewBox="0 0 48 48">
+      <ellipse cx="24" cy="24" rx="16" ry="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="10" cy="24" r="2.3" fill="currentColor"/>
+      <circle cx="24" cy="15" r="2.3" fill="currentColor"/>
+      <circle cx="38" cy="24" r="2.3" fill="currentColor"/>
+      <circle cx="24" cy="33" r="2.3" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-tree" viewBox="0 0 48 48">
+      <path d="M24 6c8 0 12 6 12 12 0 8-6 10-6 10h-12s-6-2-6-10c0-6 4-12 12-12Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="24" y1="28" x2="24" y2="42" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="6" y1="42" x2="42" y2="42" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="ico-shade" viewBox="0 0 48 48">
+      <path d="M4 16h40l-6 8H10Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="24" y1="24" x2="24" y2="42" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M8 42q16-6 32 0" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#ico-crown" style="color:var(--accent)"/></svg>
+      <span class="brand-word">AURELIUS <b>REGENT</b></span>
+    </a>
+    <nav class="links">
+      <a href="#overview">Overview</a>
+      <a href="#rooms">Rooms &amp; Villas</a>
+      <a href="#dining">Dining</a>
+      <a href="#wellness">Wellness &amp; Pools</a>
+      <a href="#events">Weddings &amp; Events</a>
+      <a href="#offers">Offers</a>
+      <a href="#policies">Policies &amp; FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-line nav-cta" href="#contact">Enquire</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <svg class="hero-motif" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g transform="translate(40,380) scale(3.6)" opacity=".8"><use href="#ico-palm" stroke="var(--star-line)"/></g>
+    <g transform="translate(880,340) scale(3.2)" opacity=".7"><use href="#ico-palm" stroke="var(--star-line)"/></g>
+    <g stroke="var(--star-line)" stroke-width="1.2" fill="none" opacity=".8">
+      <path d="M0 470q40-26 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0"/>
+      <path d="M0 520q40-26 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0"/>
+      <path d="M0 570q40-26 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Aurelius Cay · Off Mission Beach, Queensland</div>
+    <h1>A private island,<br><em>twenty minutes offshore.</em></h1>
+    <p class="hero-tag">The Aurelius Regent occupies the whole of Aurelius Cay, a private island on the Great
+      Barrier Reef reached by launch from Mission Beach — 96 rooms, suites and beach villas, four
+      restaurants, a reef-facing infinity pool, and a spa built around two overwater pavilions,
+      set low among the palms so nothing on the island stands taller than the trees.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="#rooms">Explore Rooms &amp; Villas</a>
+      <a class="btn btn-ghost" href="#contact">Reservations</a>
+    </div>
+    <div class="facts-strip fig">
+      <div><div class="num">96</div><div class="lbl">Rooms, Suites &amp; Villas</div></div>
+      <div><div class="num">4</div><div class="lbl">Restaurants</div></div>
+      <div><div class="num">2</div><div class="lbl">Pools</div></div>
+      <div><div class="num">20</div><div class="lbl">Minutes by Launch</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="wrap overview-grid">
+    <div>
+      <p class="eyebrow">The Resort</p>
+      <h2 style="font-size:clamp(28px,3.6vw,38px);margin-bottom:16px">A private island on the Great Barrier Reef</h2>
+      <p>The Aurelius Regent occupies the whole of Aurelius Cay, a private island in the Coral Sea
+        fringed by its own reef, reached by a twenty-minute launch transfer from the Aurelius
+        Regent Mission Beach Mainland Lounge. Rooms, suites and beach villas sit low among the
+        palms and rainforest canopy, built on the principle that nothing on the island should
+        stand taller than the trees around it.</p>
+      <p>The island's fringing reef is part of the Great Barrier Reef Marine Park. Snorkelling,
+        diving and reef charters leave directly from the resort's own jetty, and walking trails
+        maintained with the local national parks service run the length of the island's
+        rainforest interior.</p>
+      <ul class="kicker-list">
+        <li><span class="k">I.</span><span>A private island resort — reached only by resort launch or helicopter, no day-trippers</span></li>
+        <li><span class="k">II.</span><span>The island's fringing reef begins a few metres off the beach</span></li>
+        <li><span class="k">III.</span><span>All rooms are low-rise, screened by palm and rainforest canopy</span></li>
+      </ul>
+    </div>
+    <div class="art-panel">
+      <svg class="big-icon" viewBox="0 0 120 70"><use href="#ico-pavilion"/></svg>
+      <div class="art-cap">The Beach Pavilion — Aurelius Cay</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow">At a Glance</p>
+    <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:28px">Resort information</h2>
+    <div class="infobar fig">
+      <div class="cell"><div class="k">Address</div><div class="v">Aurelius Cay, via Mission Beach, Queensland 4852, Australia</div></div>
+      <div class="cell"><div class="k">Phone</div><div class="v">+61 7 4068 8200</div></div>
+      <div class="cell"><div class="k">Reservations</div><div class="v">reservations@aureliusregent.com.au</div></div>
+      <div class="cell"><div class="k">Check-in</div><div class="v">3:00 PM, via Mission Beach Mainland Lounge</div></div>
+      <div class="cell"><div class="k">Check-out</div><div class="v">11:00 AM</div></div>
+      <div class="cell"><div class="k">Currency</div><div class="v">Australian Dollar (AUD)</div></div>
+      <div class="cell"><div class="k">WiFi</div><div class="v">Complimentary throughout</div></div>
+      <div class="cell"><div class="k">Nearest airport</div><div class="v">Cairns Airport (CNS), then road transfer to Mission Beach and launch to the island</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Accommodation</p>
+        <h2>Rooms, Suites &amp; Villas</h2>
+        <p>96 rooms, suites and beach villas in total. Rates shown are indicative starting rates
+          in Australian Dollars (AUD), exclusive of GST, and vary by season.</p>
+      </div>
+    </div>
+    <div class="grid fig">
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-bed"/></svg></div>
+        <div class="top"><h3>Garden Room</h3><span class="tag">From AUD 480</span></div>
+        <p>King or twin bed, rainforest garden view.</p>
+        <div class="meta"><span><b>34 sq m</b> / 366 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-lamp"/></svg></div>
+        <div class="top"><h3>Palm Room</h3><span class="tag">From AUD 560</span></div>
+        <p>Higher elevation, palm canopy view.</p>
+        <div class="meta"><span><b>38 sq m</b> / 409 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-window"/></svg></div>
+        <div class="top"><h3>Beach View Room</h3><span class="tag">From AUD 620</span></div>
+        <p>Full ocean views, steps from the sand.</p>
+        <div class="meta"><span><b>40 sq m</b> / 431 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-window"/></svg></div>
+        <div class="top"><h3>Reef View Room</h3><span class="tag">From AUD 680</span></div>
+        <p>Elevated views over the fringing reef lagoon.</p>
+        <div class="meta"><span><b>40 sq m</b> / 431 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-twin"/></svg></div>
+        <div class="top"><h3>Family Beach Room</h3><span class="tag">From AUD 780</span></div>
+        <p>Connecting option available; sleeps up to four.</p>
+        <div class="meta"><span><b>56 sq m</b> / 603 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-sofa"/></svg></div>
+        <div class="top"><h3>Island Suite</h3><span class="tag">From AUD 980</span></div>
+        <p>Separate living area, ideal for extended stays.</p>
+        <div class="meta"><span><b>64 sq m</b> / 689 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t5"><svg><use href="#ico-plunge"/></svg></div>
+        <div class="top"><h3>Beachfront Villa</h3><span class="tag">From AUD 1,650</span></div>
+        <p>Private plunge pool, direct beach frontage.</p>
+        <div class="meta"><span><b>90 sq m</b> / 969 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t4"><svg><use href="#ico-plunge"/></svg></div>
+        <div class="top"><h3>Aurelius Villa</h3><span class="tag">From AUD 2,400</span></div>
+        <p>Two bedrooms, private pool, dedicated villa host.</p>
+        <div class="meta"><span><b>140 sq m</b> / 1,507 sq ft</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t3"><svg><use href="#ico-star"/></svg></div>
+        <div class="top"><h3>Aurelius Regent Suite</h3><span class="tag">From AUD 6,500</span></div>
+        <p>The island's northern point — private beach, plunge pool, and a dedicated butler team.</p>
+        <div class="meta"><span><b>260 sq m</b> / 2,799 sq ft</span></div>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:13.5px"><b style="color:var(--ink)">Island Host Service</b> —
+      Beachfront Villa and above, and Aurelius Privé Gold/Platinum members: a dedicated villa
+      host, complimentary breakfast, all-day refreshments, and priority booking for reef
+      excursions and the Beach Pavilion.</p>
+  </div>
+</section>
+
+<section class="alt" id="dining">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Dining</p>
+        <h2>Four Restaurants, One Reef</h2>
+        <p>From sunrise breakfast on the terrace to a single table set fresh on the sand each
+          evening — dining built around what the island and the reef provide.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-dine1)"></div>
+        <div class="top"><h3>Sunrise Terrace</h3><span class="tag">All-Day, Breakfast</span></div>
+        <p>Beachfront breakfast and all-day dining, tables spilling onto the sand.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-dine2)"></div>
+        <div class="top"><h3>The Pantry</h3><span class="tag">Cheese &amp; Charcuterie</span></div>
+        <p>An evening cheese and charcuterie room, stocked from Australian producers, with a
+          reserve wine list.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-dine3)"></div>
+        <div class="top"><h3>Tide Table</h3><span class="tag">Beachfront, Dinner Only</span></div>
+        <p>A single table set fresh on the sand each evening, by reservation only.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-dine4)"></div>
+        <div class="top"><h3>The Picnic</h3><span class="tag">Beach Lunch &amp; Hampers</span></div>
+        <p>A packed hamper delivered to any beach on the island, or lunch service at the Beach
+          Pavilion.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-dine5)"></div>
+        <div class="top"><h3>Reef Bar</h3><span class="tag">Champagne &amp; Cocktails</span></div>
+        <p>Sparkling on arrival, reef-facing cocktails and canapés at sunset.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-dine6)"></div>
+        <div class="top"><h3>Cellar Room</h3><span class="tag">Wine</span></div>
+        <p>A curated Australian and New Zealand list, with tastings by appointment.</p>
+      </div>
+    </div>
+    <div class="policy-grid" style="margin-top:34px">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div class="mini-photo" style="background-image:var(--img-cabana)"></div>
+        <div>
+          <p class="qa q" style="margin-top:0">The Point Bar</p>
+          <p class="qa a">At the island's northern point, facing the reef. Cocktails and sunset
+            service by the water. Daily, 3:00 PM – 11:00 PM.</p>
+        </div>
+      </div>
+      <div>
+        <p class="qa q" style="margin-top:0">In-Room &amp; In-Villa Dining</p>
+        <p class="qa a">Available 24 hours from a menu spanning all four restaurants, plus a
+          dedicated children's menu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="wellness">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Wellness</p>
+        <h2>Spa, Fitness &amp; Pools</h2>
+        <p>Aurelius Spa, Aurelius Fit, and two pools — the reef-facing infinity pool and a
+          freshwater lagoon pool set among the rainforest.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-spa)"></div>
+        <div class="top"><h3>Aurelius Spa</h3><span class="tag">9AM–7PM</span></div>
+        <p>Two overwater treatment pavilions and a beachfront relaxation deck. Signature: Reef
+          Clay Wrap, Rainforest Massage, Island Bridal Ritual.</p>
+        <div class="meta"><span>Min. age <b>16</b>, accompanied</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-dumbbell"/></svg></div>
+        <div class="top"><h3>Aurelius Fit</h3><span class="tag">24 Hours</span></div>
+        <p>Open-air pavilion with ocean views. Yoga, Pilates and functional classes; personal
+          training on request.</p>
+      </div>
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-kids)"></div>
+        <div class="top"><h3>Little Reef Explorers</h3><span class="tag">Ages 4–12</span></div>
+        <p>Supervised kids' club with games, craft and a reef touch-tank session. Complimentary
+          for resort guests.</p>
+        <div class="meta"><span><b>9:00 AM – 5:00 PM</b> daily</span></div>
+      </div>
+    </div>
+    <div class="grid fig" style="margin-top:22px">
+      <div class="card">
+        <div class="card-photo" style="background-image:var(--img-cabana)"></div>
+        <div class="top"><h3>The Point Pool</h3><span class="tag">Infinity Edge · 27°C</span></div>
+        <p>Facing the reef, heated year-round, with private cabanas.</p>
+        <div class="meta"><span><b>6:00 AM–8:00 PM</b> · family hours 6–10 AM</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-wave"/></svg></div>
+        <div class="top"><h3>Rainforest Lagoon Pool</h3><span class="tag">Freshwater</span></div>
+        <p>Set among the rainforest canopy, open year-round.</p>
+        <div class="meta"><span><b>6:00 AM–8:00 PM</b> · swim lessons by appointment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Weddings &amp; Events</p>
+        <h2>An Island, All to Yourselves</h2>
+        <p>Anchored by the open-air Aurelius Pavilion, with a smaller reef-view room, boardroom
+          suites and a rainforest lawn for ceremonies.</p>
+      </div>
+    </div>
+    <div class="grid fig">
+      <div class="card">
+        <div class="card-photo t5"><svg><use href="#ico-shade"/></svg></div>
+        <div class="top"><h3>Aurelius Pavilion</h3><span class="tag">400 sq m</span></div>
+        <p>Open-air, beachfront, with retractable shade sails; divides into two sections.</p>
+        <div class="meta"><span>Up to <b>300</b> reception / <b>200</b> banquet</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t1"><svg><use href="#ico-window"/></svg></div>
+        <div class="top"><h3>Reef Room</h3><span class="tag">160 sq m</span></div>
+        <p>Mid-size event space with lagoon and reef views.</p>
+        <div class="meta"><span>Up to <b>120</b> guests</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t4"><svg><use href="#ico-table"/></svg></div>
+        <div class="top"><h3>Boardroom &amp; Meeting Suites</h3><span class="tag">3 rooms</span></div>
+        <p>Ocean-view meeting rooms with full AV and video-conferencing.</p>
+        <div class="meta"><span><b>20–60 sq m</b> · 6–40 pax</span></div>
+      </div>
+      <div class="card">
+        <div class="card-photo t2"><svg><use href="#ico-tree"/></svg></div>
+        <div class="top"><h3>Rainforest Lawn</h3><span class="tag">450 sq m</span></div>
+        <p>An outdoor ceremony lawn beneath the rainforest canopy, steps from the beach.</p>
+        <div class="meta"><span>Up to <b>150</b> guests</span></div>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:13.5px;max-width:70ch">
+      <b style="color:var(--ink)">Weddings</b> — the whole island can be taken over exclusively
+      for multi-day celebrations, with a dedicated bridal suite and the Island Bridal Ritual spa
+      package. Contact <b style="color:var(--ink)"> +61 7 4068 8200</b> or
+      <b style="color:var(--ink)">events@aureliusregent.com.au</b>.
+    </p>
+  </div>
+</section>
+
+<section id="offers">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Offers</p>
+        <h2>Packages &amp; Experiences</h2>
+        <p>Indicative rates as of September 2026, subject to change and availability.</p>
+      </div>
+    </div>
+    <div class="grid fig">
+      <div class="card">
+        <div class="top"><h3>Reef Discovery Escape</h3><span class="tag">From AUD 780</span></div>
+        <p>Two guided reef excursions, snorkel gear, breakfast daily.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Castaway Romance</h3><span class="tag">From AUD 1,150</span></div>
+        <p>Sparkling on arrival, a private Tide Table dinner, couples' treatment at Aurelius Spa.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Dive &amp; Stay</h3><span class="tag">From AUD 890</span></div>
+        <p>Three days of guided diving on the outer reef, gear and boat included.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Family Island Holidays</h3><span class="tag">From AUD 720</span></div>
+        <p>Connecting Family Beach Room, Little Reef Explorers, breakfast for the family.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Aurelius Honeymoon</h3><span class="tag">From AUD 1,850</span></div>
+        <p>Beachfront Villa upgrade (subject to availability), turndown, private Tide Table dinner.</p>
+      </div>
+      <div class="card">
+        <div class="top"><h3>Wet Season Retreat</h3><span class="tag">From AUD 590</span></div>
+        <p>Low-season rate, November to April, with a resort credit for spa or dining.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="policies">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Good to Know</p>
+        <h2>Policies &amp; FAQ</h2>
+      </div>
+    </div>
+    <div class="policy-grid fig">
+      <div>
+        <div class="policy-row"><div class="k">Check-in / Check-out</div><div class="v">3:00 PM / 11:00 AM</div></div>
+        <div class="policy-row"><div class="k">Minimum check-in age</div><div class="v">18</div></div>
+        <div class="policy-row"><div class="k">Unmarried couples</div><div class="v">Welcome</div></div>
+        <div class="policy-row"><div class="k">Cancellation (flexible)</div><div class="v">Free up to 48h before arrival</div></div>
+        <div class="policy-row"><div class="k">Alcohol</div><div class="v">Fully licensed, served throughout</div></div>
+        <div class="policy-row"><div class="k">Pets</div><div class="v">Not permitted (reef and rainforest sanctuary)</div></div>
+        <div class="policy-row" style="border-bottom:none"><div class="k">Smoking</div><div class="v">Indoors prohibited; outdoor areas available</div></div>
+      </div>
+      <div class="qa">
+        <p class="q" style="margin-top:0">Is breakfast included?</p>
+        <p class="a">Not by default. À la carte or a breakfast package from AUD 55/guest;
+          included in select packages.</p>
+        <p class="q">What if the launch can't run due to weather?</p>
+        <p class="a">The resort operates its own launch and helicopter transfer. If conditions
+          prevent the boat crossing, guests are moved to the next available crossing or a
+          helicopter transfer at no charge.</p>
+        <p class="q">Does the resort have a loyalty programme?</p>
+        <p class="a">Yes — Aurelius Privé (Silver, Gold, Platinum, Aurelius Elite), free to join.</p>
+        <p class="q">Is the resort wheelchair accessible?</p>
+        <p class="a">Selected villas and public areas are accessible; please advise the resort in
+          advance of any specific requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Find Us</p>
+      <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:18px">Aurelius Cay, Queensland</h2>
+      <p>Aurelius Cay, via Mission Beach, Queensland 4852, Australia.</p>
+      <div class="policy-grid" style="grid-template-columns:1fr">
+        <div>
+          <div class="policy-row"><div class="k">Phone</div><div class="v">+61 7 4068 8200</div></div>
+          <div class="policy-row"><div class="k">Reservations</div><div class="v">reservations@aureliusregent.com.au</div></div>
+          <div class="policy-row"><div class="k">Concierge</div><div class="v">concierge@aureliusregent.com.au</div></div>
+          <div class="policy-row"><div class="k">Weddings &amp; Events</div><div class="v">events@aureliusregent.com.au</div></div>
+          <div class="policy-row" style="border-bottom:none"><div class="k">Nearest airport</div><div class="v">Cairns Airport (CNS), ~2.5 hr road transfer plus 20 min launch</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="map-panel">
+      <svg class="big-icon" viewBox="0 0 120 70" preserveAspectRatio="xMidYMid slice"><use href="#ico-pavilion"/></svg>
+      <svg class="pin" viewBox="0 0 400 300" aria-hidden="true">
+        <g stroke="var(--border)" stroke-width="1">
+          <line x1="0" y1="80" x2="400" y2="80"/>
+          <line x1="0" y1="170" x2="400" y2="170"/>
+          <line x1="120" y1="0" x2="120" y2="300"/>
+          <line x1="280" y1="0" x2="280" y2="300"/>
+        </g>
+        <circle cx="200" cy="130" r="7" fill="var(--accent)"/>
+        <circle cx="200" cy="130" r="16" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".55"/>
+        <text x="212" y="126" font-family="Archivo, sans-serif" font-size="11" fill="var(--ink)">Aurelius Cay</text>
+        <text x="212" y="140" font-family="Archivo, sans-serif" font-size="10" fill="var(--ink-soft)">via Mission Beach, QLD</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand-foot">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#ico-crown" style="color:#D9A85C"/></svg>
+        <span>The Aurelius Regent, Aurelius Cay</span>
+      </div>
+      <nav>
+        <a href="#rooms">Rooms &amp; Villas</a>
+        <a href="#dining">Dining</a>
+        <a href="#wellness">Wellness &amp; Pools</a>
+        <a href="#events">Weddings &amp; Events</a>
+        <a href="#policies">Policies &amp; FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="fine">
+      Fictional demonstration property, created for internal software testing (Canary
+      compendium / knowledge-base workflows). The Aurelius Regent does not exist; all names,
+      addresses, contact details and rates on this page are invented and should never be
+      treated as real. © 2026 Aurelius Regent Hotels — demo content only.
+    </div>
+  </div>
+</footer>
+</body>
+</html>
