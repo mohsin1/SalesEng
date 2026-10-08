@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>The Statler, New York</title>
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1519687198309-ea5b4e52fc1c?auto=format&fit=crop&w=2000&q=75">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap');
+  :root{ --bg:#F8F6F1;--surface:#FFFFFF;--surface-2:#EEEAE1;--ink:#151B22;--ink-soft:#5A6270;--accent:#A8834A;--accent-ink:#FFFFFF;--tag:#7E2A33;--border:#DDD5C4;--shadow:rgba(21,27,34,0.12);--star-line:rgba(168,131,74,0.38);--footer:#151B22; --img-hero:url("https://images.unsplash.com/photo-1519687198309-ea5b4e52fc1c?auto=format&fit=crop&w=2000&q=75"); }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0E1217;--surface:#151B22;--surface-2:#1B232D;--ink:#EFEAE0;--ink-soft:#A9B1BE;--accent:#D4AE6E;--accent-ink:#151B22;--tag:#E09AA2;--border:#2A3440;--shadow:rgba(0,0,0,0.45);--star-line:rgba(212,174,110,0.30);--footer:#0A0D11; } }
+  :root[data-theme="dark"]{ --bg:#0E1217;--surface:#151B22;--surface-2:#1B232D;--ink:#EFEAE0;--ink-soft:#A9B1BE;--accent:#D4AE6E;--accent-ink:#151B22;--tag:#E09AA2;--border:#2A3440;--shadow:rgba(0,0,0,0.45);--star-line:rgba(212,174,110,0.30);--footer:#0A0D11; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-inline:0}
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:24px}
+  @media (max-width:520px){ .wrap{padding-inline:16px} }
+  h1,h2,h3{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;text-wrap:balance;margin:0}
+  .eyebrow{font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  p{color:var(--ink-soft);line-height:1.7;margin:0 0 12px;max-width:62ch}
+  .fig{font-variant-numeric:tabular-nums}
+  a{color:inherit}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:2px;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, opacity .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--accent);color:var(--accent-ink)}
+  .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+  .btn-line{border-color:var(--border);color:var(--ink)}
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 86%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand svg{width:26px;height:26px;flex:none}
+  .brand-word{font-family:'Playfair Display',serif;font-weight:600;font-size:19px;letter-spacing:.03em}
+  .brand-word b{color:var(--accent)}
+  nav.links{display:flex;gap:20px;flex-wrap:nowrap}
+  nav.links a{white-space:nowrap;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-soft);padding-block:4px;border-bottom:1px solid transparent}
+  nav.links a:hover{color:var(--ink);border-color:var(--accent)}
+  .nav-cta{flex:none}
+  @media (max-width:1100px){ nav.links{display:none} }
+  .hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding-block:96px 84px;background-size:cover;background-position:center 40%;background-repeat:no-repeat}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(175deg, rgba(12,15,20,.88) 0%, rgba(10,13,18,.80) 55%, rgba(6,8,12,.94) 100%),radial-gradient(60% 70% at 82% 8%, rgba(168,131,74,.26), transparent 60%);z-index:0}
+  .hero-motif{position:absolute;inset:0;z-index:0;opacity:.5}
+  .hero-inner{position:relative;z-index:1}
+  .hero-eyebrow{color:var(--star-line);font-family:'Manrope',sans-serif;letter-spacing:.22em;text-transform:uppercase;font-size:12px;font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:.01em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-tag{font-size:16.5px;color:#DCD6C6;max-width:50ch;margin-top:18px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .facts-strip{position:relative;z-index:1;margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.16)}
+  .facts-strip div{padding:20px 6px 0;border-left:1px solid rgba(255,255,255,.16)}
+  .facts-strip div:first-child{border-left:none}
+  .facts-strip .num{font-family:'Playfair Display',serif;font-size:30px;color:var(--accent)}
+  .facts-strip .lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#B4B8C2;margin-top:4px}
+  @media (max-width:760px){ .facts-strip{grid-template-columns:repeat(2,1fr)} .facts-strip div:nth-child(3){border-left:none} }
+  section{padding-block:76px}
+  section.alt{background:var(--surface-2)}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px)}
+  .section-head p{margin:8px 0 0}
+  .overview-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media (max-width:820px){ .overview-grid{grid-template-columns:1fr} }
+  .art-panel{position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;border:1px solid var(--border);background-size:cover;background-position:center}
+  .art-panel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;z-index:1;background:linear-gradient(to top, rgba(8,13,22,.88), transparent)}
+  .art-cap{position:absolute;left:18px;bottom:16px;right:18px;color:#E7DFC8;font-size:12px;letter-spacing:.05em;z-index:2}
+  .kicker-list{display:flex;flex-direction:column;gap:14px;margin-top:22px;padding:0}
+  .kicker-list li{display:flex;gap:12px;list-style:none;align-items:baseline}
+  .kicker-list .k{color:var(--accent);font-family:'Playfair Display',serif;font-size:20px;flex:none;width:1.4em}
+  .kicker-list span{color:var(--ink-soft);font-size:14.5px}
+  .infobar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+  .infobar .cell{background:var(--surface);padding:18px 20px}
+  @media (max-width:820px){ .infobar{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:440px){ .infobar{grid-template-columns:1fr} }
+  .infobar .cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+  .infobar .cell .v{font-size:14px;color:var(--ink);overflow-wrap:anywhere}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:920px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:620px){ .grid,.grid.two{grid-template-columns:1fr} }
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease, box-shadow .18s ease;overflow:hidden}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px var(--shadow)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .card h3{font-size:21px}
+  .card .tag{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--tag);font-weight:600;white-space:nowrap}
+  .card .meta{display:flex;gap:8px 16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--border);padding-top:10px;margin-top:auto}
+  .card .meta b{color:var(--ink);font-weight:600}
+  .card p{font-size:13.8px;margin:0}
+  .card-photo{aspect-ratio:4/3;background-size:cover;background-position:center;background-color:var(--surface-2);margin:-24px -22px 14px;border-radius:2px 2px 0 0}
+  .hours{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--border);padding-top:10px;margin-top:auto}
+  .hours div{display:flex;justify-content:space-between;gap:12px}
+  .hours b{color:var(--ink);font-weight:600}
+  .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  @media (max-width:760px){ .policy-grid{grid-template-columns:1fr} }
+  .policy-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--border)}
+  .policy-row .k{font-size:13.5px;font-weight:600;color:var(--ink);flex:0 0 42%}
+  .policy-row .v{font-size:13.5px;color:var(--ink-soft);text-align:right;flex:1;min-width:0;overflow-wrap:anywhere}
+  .qa{margin-top:10px}
+  .qa .q{font-size:14.5px;font-weight:600;margin-top:20px;color:var(--ink)}
+  .qa .a{font-size:13.8px;margin-top:4px}
+  .mini-photo{width:112px;height:82px;flex:none;border-radius:2px;background-size:cover;background-position:center}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr} }
+  .map-panel{aspect-ratio:4/3;border-radius:2px;border:1px solid var(--border);position:relative;overflow:hidden;background-size:cover;background-position:center}
+  .map-panel::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(160deg, rgba(15,24,40,.62), rgba(9,15,26,.80))}
+  .map-panel svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+  footer{background:var(--footer);color:#CFC6B0;padding-block:52px 28px}
+  footer .wrap{display:flex;flex-direction:column;gap:22px}
+  footer .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap}
+  footer nav a{font-size:12.5px;text-decoration:none;color:#B7AF97}
+  footer nav a:hover{color:#fff}
+  footer .fine{font-size:11.5px;color:#8B8770;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.6}
+  .brand-foot{display:flex;align-items:center;gap:10px}
+  .brand-foot svg{width:22px;height:22px}
+  .brand-foot span{font-family:'Playfair Display',serif;font-size:18px;color:#fff}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav"><div class="wrap nav-inner">
+  <a class="brand" href="#top"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="20,2 24,15 37,15 26.5,23 30.5,36 20,28 9.5,36 13.5,23 3,15 16,15" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--accent)"></polygon></svg>
+  <span class="brand-word">STATLER <b>NEW YORK</b></span></a>
+  <nav class="links"><a href="#rooms">Rooms &amp; Suites</a><a href="#dining">Dining</a><a href="#wellness">Wellness &amp; Pool</a><a href="#events">Meetings &amp; Events</a><a href="#hours">Opening Hours</a><a href="#offers">Offers</a><a href="#policies">Policies &amp; FAQ</a><a href="#contact">Contact</a></nav>
+  <a class="btn btn-line nav-cta" href="#contact">Enquire</a>
+</div></header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" style="background-image:var(--img-hero)">
+  <svg class="hero-motif" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs><pattern id="star8" width="120" height="120" patternUnits="userSpaceOnUse"><g stroke="var(--star-line)" stroke-width="1" fill="none">
+    <polygon points="60,14 68,45 99,45 74,63 84,94 60,75 36,94 46,63 21,45 52,45"></polygon></g></pattern></defs>
+    <rect width="1200" height="640" fill="url(#star8)"></rect></svg>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Midtown Manhattan · New York</div>
+    <h1>Grand Central,<br><em>just across the street.</em></h1>
+    <p class="hero-tag">The Statler, New York occupies a restored 1929 Art Deco railroad headquarters on Vanderbilt Place — 420 rooms and suites across 28 floors, five restaurants and a rooftop bar, a skylit pool, and a ballroom built for the age of the Twentieth Century Limited.</p>
+    <div class="hero-ctas"><a class="btn btn-gold" href="#rooms">Explore Rooms &amp; Suites</a><a class="btn btn-ghost" href="#contact">Reservations</a></div>
+    <div class="facts-strip fig"><div><div class="num">420</div><div class="lbl">Rooms &amp; Suites</div></div><div><div class="num">5</div><div class="lbl">Restaurants</div></div><div><div class="num">28</div><div class="lbl">Floors</div></div><div><div class="num">1</div><div class="lbl">Skylit Pool</div></div></div>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview"><div class="wrap overview-grid">
+  <div>
+    <p class="eyebrow">The Hotel</p>
+    <h2 style="font-size:clamp(28px,3.6vw,38px);margin-bottom:16px">A 1929 railroad landmark, reopened as the Statler's American flagship</h2>
+    <p>The Statler, New York occupies the former Hudson &amp; Lexington Railroad Company headquarters, a 28-storey Art Deco tower completed in 1929 on Vanderbilt Place, directly across from Grand Central Terminal. Reopened in 2024 as the North American flagship of Statler Hotels — sister property to The Statler, London, The Statler, Paris and Statler ME in Riyadh — its limestone setbacks, bronze elevator doors and terrazzo concourse have been restored around 420 rooms and suites.</p><p>The hotel sits in the heart of Midtown, a two-minute walk from Grand Central, five minutes from Bryant Park and the New York Public Library, and ten minutes from Fifth Avenue and Rockefeller Center.</p>
+    <ul class="kicker-list"><li><span class="k">I.</span><span>The original 1929 ticketing hall, with its bronze clock and coffered ceiling, is now the hotel lobby and reception</span></li><li><span class="k">II.</span><span>The former railroad directors' boardroom on the 27th floor is the Vanderbilt Club Lounge</span></li><li><span class="k">III.</span><span>The Grand Central Ballroom is the largest pillarless hotel ballroom in East Midtown</span></li></ul>
+  </div>
+  <div class="art-panel" style="background-image:url('https://images.unsplash.com/photo-1742844552193-2fd3425cd26d?auto=format&fit=crop&w=1200&q=75')"><div class="art-cap">The Ticket Hall — lobby &amp; reception, 12 Vanderbilt Place</div></div>
+</div></section>
+
+<!-- ============ QUICK FACTS ============ -->
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">At a Glance</p>
+  <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:28px">Hotel information</h2>
+  <div class="infobar fig"><div class="cell"><div class="k">Address</div><div class="v">12 Vanderbilt Place, New York, NY 10017, United States</div></div><div class="cell"><div class="k">Phone</div><div class="v">+1 (212) 555-0148</div></div><div class="cell"><div class="k">Reservations</div><div class="v">reservations@statlernewyork.com</div></div><div class="cell"><div class="k">Check-in</div><div class="v">4:00 PM</div></div><div class="cell"><div class="k">Check-out</div><div class="v">12:00 PM (noon)</div></div><div class="cell"><div class="k">Currency</div><div class="v">US Dollar (USD) · rates excl. NYC taxes</div></div><div class="cell"><div class="k">WiFi</div><div class="v">Complimentary throughout</div></div><div class="cell"><div class="k">Nearest subway</div><div class="v">Grand Central–42 St (4·5·6·7·S) — 2 min walk</div></div></div>
+</div></section>
+
+<!-- ============ ROOMS ============ -->
+<section id="rooms"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Accommodation</p><h2>Rooms &amp; Suites</h2><p>420 rooms and suites across 28 floors. Rates shown are indicative nightly starting rates in US Dollars (USD), exclusive of New York City hotel taxes (14.75% + $3.50 per night) and vary by season.</p></div></div>
+  <div class="grid fig"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Superior King</h3><span class="tag">From $495</span></div>
+<p>Quiet, well-proportioned rooms on floors 4–11 with a king bed dressed in Frette linen, a walnut writing desk and Art Deco bronze lamps. Bathrooms in Carrara marble with a walk-in rain shower and Le Labo amenities.</p>
+<div class="meta"><span><b>View</b> Avenue or Courtyard</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 2</span><span>300 sq ft / 28 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1590490359683-658d3d23f972?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Superior Two Queens</h3><span class="tag">From $525</span></div>
+<p>The same Deco-inspired finish as the Superior King, with two queen beds and a little more floor space — a favourite with families and friends travelling together.</p>
+<div class="meta"><span><b>View</b> Avenue</span><span><b>Bed</b> 2 Queens</span><span><b>Sleeps</b> 4</span><span>340 sq ft / 32 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1771775529138-a7a20ba7e032?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Deluxe Room</h3><span class="tag">From $585</span></div>
+<p>Higher floors (12–19) with oversized windows framing the Midtown skyline, a lounge chair and ottoman, Nespresso machine and a marble bathroom with double vanity. King or two queens.</p>
+<div class="meta"><span><b>View</b> Midtown Skyline</span><span><b>Bed</b> King or 2 Queens</span><span><b>Sleeps</b> 2–4</span><span>380 sq ft / 35 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1786526818707-d28a60d7c21f?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Grand Central View Room</h3><span class="tag">From $665</span></div>
+<p>Corner-facing rooms looking straight down onto the terminal's Beaux-Arts façade and the Chrysler Building beyond. A deep soaking tub sits beside the window.</p>
+<div class="meta"><span><b>View</b> Grand Central &amp; Chrysler</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 2</span><span>410 sq ft / 38 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1777169794972-12095816073b?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Vanderbilt Club Room</h3><span class="tag">From $745</span></div>
+<p>A Deluxe room on floors 20–26 with access to the Vanderbilt Club Lounge — breakfast, all-day refreshments, evening cocktails and canapés, plus pressing of two garments per stay.</p>
+<div class="meta"><span><b>View</b> Skyline</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 2</span><span>400 sq ft / 37 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1592229506151-845940174bb0?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Junior Suite</h3><span class="tag">From $895</span></div>
+<p>An open-plan suite with a separate sitting area, velvet sofa bed and dining table for two, walk-in wardrobe and a marble bathroom with both tub and shower. Club Lounge access included.</p>
+<div class="meta"><span><b>View</b> Park Avenue</span><span><b>Bed</b> King + sofa bed</span><span><b>Sleeps</b> 3</span><span>550 sq ft / 51 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1713832139688-79676097edde?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>One-Bedroom Park Suite</h3><span class="tag">From $1,350</span></div>
+<p>A separate living room with fireplace and bar cabinet, a king bedroom with dressing room, and a guest powder room — ideal for longer stays or hosting a small meeting.</p>
+<div class="meta"><span><b>View</b> Park Avenue</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 3</span><span>850 sq ft / 79 m²</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1568115286680-d203e08a8be6?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Terrace Suite</h3><span class="tag">From $2,200</span></div>
+<p>On the setback floors (24–26), each with a private landscaped terrace, living and dining room for six, and a bedroom with skyline views on two sides.</p>
+<div class="meta"><span><b>View</b> Skyline + private terrace</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 3</span><span>1,100 sq ft / 102 m² + terrace</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1775866914767-7e4646f2481a?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Statler Penthouse</h3><span class="tag">From $8,500</span></div>
+<p>The entire 28th floor: two bedrooms, a library, a dining room for ten, a wraparound terrace facing the Chrysler Building, and a dedicated butler and house car.</p>
+<div class="meta"><span><b>View</b> 360° Manhattan</span><span><b>Bed</b> 2 Kings</span><span><b>Sleeps</b> Up to 5</span><span>3,200 sq ft / 297 m²</span></div>
+</div></div>
+  <p style="margin-top:22px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">Vanderbilt Club Lounge</b> — 27th floor, for Vanderbilt Club Rooms, all suites and Statler Privé Gold/Platinum members. Breakfast 6:30–10:30 AM, all-day refreshments, evening cocktails and canapés 5:00–7:30 PM, desserts 8:00–10:00 PM. Open 6:30 AM–10:00 PM daily.</p><p style="margin-top:22px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">In every room</b> — Complimentary WiFi, 55" smart TV with casting, Nespresso machine, minibar, in-room safe, Frette linens, pillow menu, iron and board, blackout shades, USB-C charging. Connecting rooms and accessible rooms with roll-in showers available.</p>
+</div></section>
+
+<!-- ============ DINING ============ -->
+<section class="alt" id="dining"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Dining</p><h2>Five Kitchens, One Address</h2><p>Five restaurants, a cocktail bar and a rooftop bar — from a classic New York chophouse to a twelve-seat sushi counter. All open to non-residents; reservations recommended for dinner.</p></div></div>
+  <div class="grid"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Vanderbilt Grill</h3><span class="tag">Chophouse</span></div>
+<p>The signature dining room, in the old railroad executives' dining hall: USDA Prime dry-aged steaks, a raw bar and Dover sole carved tableside. Smart casual.</p>
+<div class="hours"><div><span>Dinner, Mon–Sat</span><b>5:30 PM–10:30 PM</b></div><div><span>Sunday</span><b>Closed</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Lucia</h3><span class="tag">Italian</span></div>
+<p>A warm, wood-panelled trattoria with hand-rolled pasta, wood-fired dishes and an all-Italian wine list of 400 labels.</p>
+<div class="hours"><div><span>Lunch, daily</span><b>11:30 AM–2:30 PM</b></div><div><span>Dinner, daily</span><b>5:30 PM–10:30 PM</b></div><div><span>Weekend brunch</span><b>10:30 AM–3:00 PM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1752135534175-44aa59a1bb50?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Kaze</h3><span class="tag">Sushi Counter</span></div>
+<p>Twelve seats around a hinoki counter for an 18-course Edomae omakase; two seatings nightly. Reservations essential, opening 30 days ahead.</p>
+<div class="hours"><div><span>Seatings, Tue–Sat</span><b>6:00 PM &amp; 8:30 PM</b></div><div><span>Sun–Mon</span><b>Closed</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1560130934-590b85fc08e7?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Concourse</h3><span class="tag">All-Day Brasserie</span></div>
+<p>The hotel's all-day room on the restored terrazzo concourse: breakfast buffet and à la carte, New York deli classics at lunch, brasserie dinner.</p>
+<div class="hours"><div><span>Breakfast</span><b>6:30 AM–11:00 AM</b></div><div><span>Lunch</span><b>11:30 AM–3:00 PM</b></div><div><span>Dinner</span><b>5:00 PM–10:00 PM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1701722952679-beffce26d77a?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Signal Room</h3><span class="tag">Cocktail Bar</span></div>
+<p>Low-lit cocktail bar in the railroad's former telegraph office, with a Manhattan list, classic martinis and live jazz Thursday to Saturday from 8:00 PM.</p>
+<div class="hours"><div><span>Sun–Wed</span><b>4:00 PM–12:00 AM</b></div><div><span>Thu–Sat</span><b>4:00 PM–2:00 AM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1518225197792-0b2ec38b3212?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Mezzanine</h3><span class="tag">Afternoon Tea &amp; Café</span></div>
+<p>Coffee and pastries from early morning, then afternoon tea on the balcony overlooking the lobby — scones, finger sandwiches and patisserie. Bookings recommended for tea.</p>
+<div class="hours"><div><span>Coffee &amp; pastries</span><b>6:30 AM–2:00 PM</b></div><div><span>Afternoon tea</span><b>2:00 PM–5:30 PM</b></div></div>
+</div></div>
+  <div class="policy-grid" style="margin-top:34px"><div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px"><div class="mini-photo" style="background-image:url('https://images.unsplash.com/photo-1722485760838-a8b5285abd26?auto=format&fit=crop&w=400&q=75')"></div><div><div class="qa" style="margin-top:0"><p class="q" style="margin-top:0">Altitude 28</p><p class="a">Rooftop bar and terrace on the 28th floor with views to the Chrysler and Empire State Buildings. Cocktails, wine and small plates. Daily 4:00 PM–1:00 AM, May to October; enclosed winter lounge Thu–Sat 5:00 PM–12:00 AM, November to April. Ages 21+ after 8:00 PM.</p></div></div></div><div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px"><div><div class="qa" style="margin-top:0"><p class="q" style="margin-top:0">In-Room Dining</p><p class="a">Available 24 hours from a menu drawing on The Concourse and The Vanderbilt Grill, with a children's menu. Full menu 6:30 AM–11:00 PM; overnight menu 11:00 PM–6:30 AM. Dial 3 from your room.</p></div></div></div></div>
+</div></section>
+
+<!-- ============ WELLNESS ============ -->
+<section id="wellness"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Wellness</p><h2>Spa, Fitness &amp; the Skylit Pool</h2><p>Statler Spa, Statler Fit and a 20-metre pool under the original freight-hall skylight on the 5th floor.</p></div></div>
+  <div class="grid"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1787651343620-8d5303006ecb?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Statler Spa</h3><span class="tag">5th Floor</span></div>
+<p>Eight treatment rooms including a couples' suite, sauna, eucalyptus steam room and relaxation lounge. Signature: Grand Central Deep Tissue, Manhattan Express Facial, Jet Lag Recovery Ritual.</p>
+<div class="hours"><div><span>Daily</span><b>9:00 AM–9:00 PM</b></div><div><span>Last treatment</span><b>8:00 PM</b></div></div>
+<div class="meta"><span><b>Min. age</b> 16, accompanied</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1716367840407-f9414a84b325?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Statler Fit</h3><span class="tag">24 Hours</span></div>
+<p>Technogym cardio and strength floor with skyline views, Peloton bikes and a stretching studio. Personal training and morning classes by appointment.</p>
+<div class="hours"><div><span>Gym (key-card)</span><b>24 hours</b></div><div><span>Classes</span><b>Mon–Fri 7:00 AM &amp; 6:00 PM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1680609989998-6183fcea718b?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Skylit Pool</h3><span class="tag">Indoor · 20m</span></div>
+<p>A heated 20-metre lap pool beneath the restored glass skylight of the old freight hall, with a whirlpool and loungers along the colonnade.</p>
+<div class="hours"><div><span>Daily</span><b>6:00 AM–10:00 PM</b></div><div><span>Adults only</span><b>After 6:00 PM</b></div></div>
+</div></div>
+  
+</div></section>
+
+<!-- ============ EVENTS ============ -->
+<section class="alt" id="events"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Meetings &amp; Events</p><h2>Built for the Grand Occasion</h2><p>Over 30,000 sq ft of event space anchored by the pillarless Grand Central Ballroom, with a mid-size hall, fourteen meeting rooms and a rooftop terrace.</p></div></div>
+  <div class="grid two fig"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1712314947761-a8d718bd8c32?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Grand Central Ballroom</h3><span class="tag">10,200 sq ft</span></div>
+<p>Pillarless, with 24-ft ceilings, original 1929 bronze chandeliers and a dedicated pre-function foyer. Divides into three sections.</p>
+<div class="meta"><span><b>Up to</b> 900 reception / 600 banquet</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1768851142332-75f3d1b47452?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Lexington Hall</h3><span class="tag">3,800 sq ft</span></div>
+<p>Mid-size hall with natural daylight and walnut panelling, ideal for conferences and galas.</p>
+<div class="meta"><span><b>Up to</b> 300 guests</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Meeting Rooms</h3><span class="tag">14 rooms</span></div>
+<p>Including the Hudson, Madison, Park and Vanderbilt boardrooms; full AV, 4K displays and video-conferencing in every room.</p>
+<div class="meta"><span><b>Sizes</b> 300–1,400 sq ft · 8–90 pax</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1676557263010-38e1315d5aaa?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Altitude 28 Terrace</h3><span class="tag">2,600 sq ft</span></div>
+<p>Rooftop event terrace beside the bar, with Chrysler Building views; heated and tented October to April.</p>
+<div class="meta"><span><b>Up to</b> 180 reception</span></div>
+</div></div>
+  <p style="margin-top:26px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">Weddings &amp; private events</b> — ceremonies in the Grand Central Ballroom and on the Altitude 28 Terrace, with a dedicated wedding team. Sales office open Mon–Fri 9:00 AM–6:00 PM. Contact <b style="color:var(--ink)">+1 (212) 555-0149</b> or <b style="color:var(--ink)">events@statlernewyork.com</b>.</p>
+</div></section>
+
+<!-- ============ OPENING HOURS ============ -->
+<section id="hours"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Good to Know</p><h2>Opening Hours</h2><p>Hours for every outlet and service at a glance. Holiday hours may vary — please check with the concierge.</p></div></div>
+  <div class="policy-grid fig"><div><div class="policy-row"><div class="k">Front desk &amp; concierge</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Bell desk &amp; luggage storage</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Valet parking</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">The Concourse</div><div class="v">6:30 AM–10:00 PM daily</div></div>
+<div class="policy-row"><div class="k">The Mezzanine</div><div class="v">6:30 AM–5:30 PM daily</div></div>
+<div class="policy-row"><div class="k">Lucia</div><div class="v">11:30 AM–2:30 PM · 5:30–10:30 PM</div></div>
+<div class="policy-row"><div class="k">The Vanderbilt Grill</div><div class="v">5:30–10:30 PM, Mon–Sat</div></div>
+<div class="policy-row"><div class="k">Kaze</div><div class="v">6:00 &amp; 8:30 PM seatings, Tue–Sat</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">The Signal Room</div><div class="v">4:00 PM–12:00 AM (2:00 AM Thu–Sat)</div></div></div><div><div class="policy-row"><div class="k">Altitude 28 (May–Oct)</div><div class="v">4:00 PM–1:00 AM daily</div></div>
+<div class="policy-row"><div class="k">In-room dining</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Vanderbilt Club Lounge</div><div class="v">6:30 AM–10:00 PM daily</div></div>
+<div class="policy-row"><div class="k">Statler Spa</div><div class="v">9:00 AM–9:00 PM daily</div></div>
+<div class="policy-row"><div class="k">Statler Fit</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">The Skylit Pool</div><div class="v">6:00 AM–10:00 PM daily</div></div>
+<div class="policy-row"><div class="k">Business centre</div><div class="v">24 hours (key-card)</div></div>
+<div class="policy-row"><div class="k">Gift shop — Statler &amp; Co.</div><div class="v">7:00 AM–10:00 PM daily</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Events sales office</div><div class="v">Mon–Fri 9:00 AM–6:00 PM</div></div></div></div>
+</div></section>
+
+<!-- ============ OFFERS ============ -->
+<section class="alt" id="offers"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Offers</p><h2>Packages &amp; Experiences</h2><p>Indicative rates as of October 2026, per night, subject to change, availability and NYC taxes.</p></div></div>
+  <div class="grid fig"><div class="card">
+<div class="top"><h3>New York Weekend</h3><span class="tag">From $560</span></div>
+<p>Two-night minimum, daily breakfast at The Concourse and a $100 dining credit at Lucia.</p>
+</div><div class="card">
+<div class="top"><h3>Broadway Nights</h3><span class="tag">From $690</span></div>
+<p>Two orchestra tickets to a Broadway show, pre-theatre dinner at The Concourse and late check-out to 3:00 PM.</p>
+</div><div class="card">
+<div class="top"><h3>Holiday in Manhattan</h3><span class="tag">From $720</span></div>
+<p>November–December: Rockefeller Center skating for two, hot chocolate at The Mezzanine, breakfast daily.</p>
+</div><div class="card">
+<div class="top"><h3>Stay Longer</h3><span class="tag">Save 20%</span></div>
+<p>Stay four nights or more and save 20% on the best available rate, with daily breakfast.</p>
+</div><div class="card">
+<div class="top"><h3>Statler Honeymoon</h3><span class="tag">From $1,450</span></div>
+<p>Terrace Suite upgrade (subject to availability), Champagne on arrival, couples' massage and dinner at The Vanderbilt Grill.</p>
+</div><div class="card">
+<div class="top"><h3>Family in the City</h3><span class="tag">From $640</span></div>
+<p>Two Queens or connecting rooms, kids eat free at The Concourse, and an American Museum of Natural History pass for the family.</p>
+</div></div>
+</div></section>
+
+<!-- ============ POLICIES & FAQ ============ -->
+<section id="policies"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Good to Know</p><h2>Policies &amp; FAQ</h2></div></div>
+  <div class="policy-grid fig">
+    <div><div class="policy-row"><div class="k">Check-in / Check-out</div><div class="v">4:00 PM / 12:00 PM</div></div>
+<div class="policy-row"><div class="k">Early check-in / late check-out</div><div class="v">From 10:00 AM / until 3:00 PM, subject to availability ($75)</div></div>
+<div class="policy-row"><div class="k">Minimum check-in age</div><div class="v">21</div></div>
+<div class="policy-row"><div class="k">Deposit at check-in</div><div class="v">Room &amp; tax plus $100/night incidentals</div></div>
+<div class="policy-row"><div class="k">Cancellation (flexible)</div><div class="v">Free up to 48h before arrival</div></div>
+<div class="policy-row"><div class="k">Destination fee</div><div class="v">$35/night + tax — WiFi, $25 F&amp;B credit, gym &amp; pool</div></div>
+<div class="policy-row"><div class="k">Pets</div><div class="v">Dogs up to 50 lb welcome, $150 per stay</div></div>
+<div class="policy-row"><div class="k">Smoking</div><div class="v">100% non-smoking; $500 cleaning fee</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Parking</div><div class="v">Valet only, $95/night incl. in/out</div></div></div>
+    <div class="qa"><p class="q" style="margin-top:0">Is breakfast included?</p><p class="a">Not by default. Breakfast at The Concourse is $38 buffet or à la carte; included with Vanderbilt Club rooms, suites and select packages.</p><p class="q">How do I get from the airports?</p><p class="a">JFK ~45–60 min and LaGuardia ~25–35 min by car; Newark ~45 min. The hotel can arrange a house car (from $165 JFK / $125 LGA). Metro-North and the subway stop at Grand Central across the street.</p><p class="q">Does the hotel have a loyalty programme?</p><p class="a">Yes — Statler Privé (Silver, Gold, Platinum, Statler Elite), shared across all Statler hotels including London, Paris and Riyadh. Free to join.</p><p class="q">Is the hotel accessible?</p><p class="a">Yes — 21 ADA-accessible rooms (including roll-in showers), step-free entrance on Vanderbilt Place, and pool hoist access. Please advise any requirements in advance.</p><p class="q">Can I store luggage?</p><p class="a">Yes — complimentary luggage storage at the bell desk before check-in and after check-out, 24 hours.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ CONTACT ============ -->
+<section class="alt" id="contact"><div class="wrap contact-grid">
+  <div>
+    <p class="eyebrow">Find Us</p>
+    <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:18px">Vanderbilt Place, Midtown</h2>
+    <p>12 Vanderbilt Place, New York, NY 10017, United States — across from Grand Central Terminal.</p>
+    <div class="policy-grid" style="grid-template-columns:1fr"><div><div class="policy-row"><div class="k">Phone</div><div class="v">+1 (212) 555-0148</div></div>
+<div class="policy-row"><div class="k">Reservations</div><div class="v">reservations@statlernewyork.com</div></div>
+<div class="policy-row"><div class="k">Concierge</div><div class="v">concierge@statlernewyork.com</div></div>
+<div class="policy-row"><div class="k">Events &amp; Weddings</div><div class="v">events@statlernewyork.com</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Nearest airports</div><div class="v">LaGuardia (LGA) ~30 min · JFK ~50 min · Newark (EWR) ~45 min</div></div></div></div>
+  </div>
+  <div class="map-panel" style="background-image:url('https://images.unsplash.com/photo-1519687198309-ea5b4e52fc1c?auto=format&fit=crop&w=1200&q=75')">
+    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="rgba(255,255,255,.22)" stroke-width="1"><line x1="0" y1="80" x2="400" y2="80"></line><line x1="0" y1="170" x2="400" y2="170"></line><line x1="120" y1="0" x2="120" y2="300"></line><line x1="280" y1="0" x2="280" y2="300"></line></g>
+      <circle cx="200" cy="130" r="7" fill="var(--accent)"></circle><circle cx="200" cy="130" r="16" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".55"></circle>
+      <text x="212" y="126" font-family="sans-serif" font-size="11" fill="#F2ECDD">The Statler, New York</text>
+      <text x="212" y="140" font-family="sans-serif" font-size="10" fill="#C9C2AC">12 Vanderbilt Place, Midtown</text>
+    </svg>
+  </div>
+</div></section>
+
+<!-- ============ FOOTER ============ -->
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div class="brand-foot"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="20,2 24,15 37,15 26.5,23 30.5,36 20,28 9.5,36 13.5,23 3,15 16,15" fill="none" stroke="#D4AE6E" stroke-width="1.4"></polygon></svg><span>The Statler, New York</span></div>
+    <nav><a href="#rooms">Rooms &amp; Suites</a><a href="#dining">Dining</a><a href="#wellness">Wellness &amp; Pool</a><a href="#events">Meetings &amp; Events</a><a href="#hours">Opening Hours</a><a href="#offers">Offers</a><a href="#policies">Policies &amp; FAQ</a><a href="#contact">Contact</a></nav>
+  </div>
+  <div class="fine">Fictional demonstration property, created for internal software testing (Canary
+    compendium / knowledge-base workflows). The Statler, New York does not exist; all names, addresses, contact
+    details and rates on this page are invented and should never be treated as real. © 2026 Statler Hotels — demo content only.</div>
+</div></footer>
+
+<!-- Canary web chat widget (https://www.canarytechnologies.com, slug statler-new-york-demo) -->
+<script>
+(function (w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];js.id=o;js.src=f;js.async=1;fjs.parentNode.insertBefore(js,fjs)}(window,document,"script","CanaryChatWidget","https://static.cdn.canarytechnologies.com/dist/web-chat-loader.js"));CanaryChatWidget("init", { slug: "statler-new-york-demo", chat_button_bottom_offset: 20 }, 'https://www.canarytechnologies.com');
+</script>
+</body>
+</html>
