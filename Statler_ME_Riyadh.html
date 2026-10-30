@@ -119,6 +119,9 @@
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand-group{display:flex;align-items:center}
+  .back-link{font-size:12px;font-weight:600;letter-spacing:.03em;text-decoration:none;color:var(--ink-soft);white-space:nowrap;padding-right:14px;margin-right:14px;border-right:1px solid var(--border)}
+  .back-link:hover{color:var(--accent)}
   .brand svg{width:26px;height:26px;flex:none}
   .brand-word{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;letter-spacing:.03em}
   .brand-word b{color:var(--accent)}
@@ -275,13 +278,13 @@
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top">
+    <div class="brand-group"><a class="back-link" href="/" title="Back to all demos">&larr; Demo Hotels</a><a class="brand" href="#top">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <polygon points="20,2 24,15 37,15 26.5,23 30.5,36 20,28 9.5,36 13.5,23 3,15 16,15"
                  fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--accent)"/>
       </svg>
       <span class="brand-word">STATLER <b>ME</b></span>
-    </a>
+    </a></div>
     <nav class="links">
       <a href="#overview">Overview</a>
       <a href="#rooms">Rooms &amp; Suites</a>
