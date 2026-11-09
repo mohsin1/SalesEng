@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>The Statler, Helsinki</title>
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?auto=format&fit=crop&w=2000&q=75">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Figtree:wght@400;500;600;700&display=swap');
+  :root{ --bg:#F4F6F6;--surface:#FFFFFF;--surface-2:#E7ECEC;--ink:#13262F;--ink-soft:#55666E;--accent:#B5713F;--accent-ink:#FFFFFF;--tag:#2E6B78;--border:#D3DCDD;--shadow:rgba(19,38,47,0.13);--star-line:rgba(181,113,63,0.40);--footer:#13262F; --img-hero:url("https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?auto=format&fit=crop&w=2000&q=75"); }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0B161B;--surface:#112128;--surface-2:#162A33;--ink:#E9EEEE;--ink-soft:#A3B3B8;--accent:#D99766;--accent-ink:#13262F;--tag:#7DB8C2;--border:#243B45;--shadow:rgba(0,0,0,0.45);--star-line:rgba(217,151,102,0.30);--footer:#081014; } }
+  :root[data-theme="dark"]{ --bg:#0B161B;--surface:#112128;--surface-2:#162A33;--ink:#E9EEEE;--ink-soft:#A3B3B8;--accent:#D99766;--accent-ink:#13262F;--tag:#7DB8C2;--border:#243B45;--shadow:rgba(0,0,0,0.45);--star-line:rgba(217,151,102,0.30);--footer:#081014; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Figtree',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-inline:0}
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:24px}
+  @media (max-width:520px){ .wrap{padding-inline:16px} }
+  h1,h2,h3{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;text-wrap:balance;margin:0}
+  .eyebrow{font-family:'Figtree',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  p{color:var(--ink-soft);line-height:1.7;margin:0 0 12px;max-width:62ch}
+  .fig{font-variant-numeric:tabular-nums}
+  a{color:inherit}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:2px;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, opacity .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--accent);color:var(--accent-ink)}
+  .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+  .btn-line{border-color:var(--border);color:var(--ink)}
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 86%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand-group{display:flex;align-items:center}
+  .back-link{font-size:12px;font-weight:600;letter-spacing:.03em;text-decoration:none;color:var(--ink-soft);white-space:nowrap;padding-right:14px;margin-right:14px;border-right:1px solid var(--border)}
+  .back-link:hover{color:var(--accent)}
+  .brand svg{width:26px;height:26px;flex:none}
+  .brand-word{font-family:'Newsreader',serif;font-weight:600;font-size:19px;letter-spacing:.03em}
+  .brand-word b{color:var(--accent)}
+  nav.links{display:flex;gap:20px;flex-wrap:nowrap}
+  nav.links a{white-space:nowrap;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-soft);padding-block:4px;border-bottom:1px solid transparent}
+  nav.links a:hover{color:var(--ink);border-color:var(--accent)}
+  .nav-cta{flex:none}
+  @media (max-width:1100px){ nav.links{display:none} }
+  .hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding-block:96px 84px;background-size:cover;background-position:center 40%;background-repeat:no-repeat}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(175deg, rgba(10,24,32,.80) 0%, rgba(9,22,30,.64) 55%, rgba(5,14,20,.92) 100%),radial-gradient(60% 70% at 82% 8%, rgba(181,113,63,.24), transparent 60%);z-index:0}
+  .hero-motif{position:absolute;inset:0;z-index:0;opacity:.5}
+  .hero-inner{position:relative;z-index:1}
+  .hero-eyebrow{color:var(--star-line);font-family:'Figtree',sans-serif;letter-spacing:.22em;text-transform:uppercase;font-size:12px;font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:.01em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-tag{font-size:16.5px;color:#DCD6C6;max-width:50ch;margin-top:18px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .facts-strip{position:relative;z-index:1;margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.16)}
+  .facts-strip div{padding:20px 6px 0;border-left:1px solid rgba(255,255,255,.16)}
+  .facts-strip div:first-child{border-left:none}
+  .facts-strip .num{font-family:'Newsreader',serif;font-size:30px;color:var(--accent)}
+  .facts-strip .lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#B4B8C2;margin-top:4px}
+  @media (max-width:760px){ .facts-strip{grid-template-columns:repeat(2,1fr)} .facts-strip div:nth-child(3){border-left:none} }
+  section{padding-block:76px}
+  section.alt{background:var(--surface-2)}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px)}
+  .section-head p{margin:8px 0 0}
+  .overview-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media (max-width:820px){ .overview-grid{grid-template-columns:1fr} }
+  .art-panel{position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;border:1px solid var(--border);background-size:cover;background-position:center}
+  .art-panel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;z-index:1;background:linear-gradient(to top, rgba(8,13,22,.88), transparent)}
+  .art-cap{position:absolute;left:18px;bottom:16px;right:18px;color:#E7DFC8;font-size:12px;letter-spacing:.05em;z-index:2}
+  .kicker-list{display:flex;flex-direction:column;gap:14px;margin-top:22px;padding:0}
+  .kicker-list li{display:flex;gap:12px;list-style:none;align-items:baseline}
+  .kicker-list .k{color:var(--accent);font-family:'Newsreader',serif;font-size:20px;flex:none;width:1.4em}
+  .kicker-list span{color:var(--ink-soft);font-size:14.5px}
+  .infobar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+  .infobar .cell{background:var(--surface);padding:18px 20px}
+  @media (max-width:820px){ .infobar{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:440px){ .infobar{grid-template-columns:1fr} }
+  .infobar .cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+  .infobar .cell .v{font-size:14px;color:var(--ink);overflow-wrap:anywhere}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:920px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:620px){ .grid,.grid.two{grid-template-columns:1fr} }
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease, box-shadow .18s ease;overflow:hidden}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px var(--shadow)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .card h3{font-size:21px}
+  .card .tag{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--tag);font-weight:600;white-space:nowrap}
+  .card .meta{display:flex;gap:8px 16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--border);padding-top:10px;margin-top:auto}
+  .card .meta b{color:var(--ink);font-weight:600}
+  .card p{font-size:13.8px;margin:0}
+  .card-photo{aspect-ratio:4/3;background-size:cover;background-position:center;background-color:var(--surface-2);margin:-24px -22px 14px;border-radius:2px 2px 0 0}
+  .hours{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--border);padding-top:10px;margin-top:auto}
+  .hours div{display:flex;justify-content:space-between;gap:12px}
+  .hours b{color:var(--ink);font-weight:600}
+  .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  @media (max-width:760px){ .policy-grid{grid-template-columns:1fr} }
+  .policy-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--border)}
+  .policy-row .k{font-size:13.5px;font-weight:600;color:var(--ink);flex:0 0 42%}
+  .policy-row .v{font-size:13.5px;color:var(--ink-soft);text-align:right;flex:1;min-width:0;overflow-wrap:anywhere}
+  .qa{margin-top:10px}
+  .qa .q{font-size:14.5px;font-weight:600;margin-top:20px;color:var(--ink)}
+  .qa .a{font-size:13.8px;margin-top:4px}
+  .mini-photo{width:112px;height:82px;flex:none;border-radius:2px;background-size:cover;background-position:center}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr} }
+  .map-panel{aspect-ratio:4/3;border-radius:2px;border:1px solid var(--border);position:relative;overflow:hidden;background-size:cover;background-position:center}
+  .map-panel::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(160deg, rgba(15,24,40,.62), rgba(9,15,26,.80))}
+  .map-panel svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+  footer{background:var(--footer);color:#CFC6B0;padding-block:52px 28px}
+  footer .wrap{display:flex;flex-direction:column;gap:22px}
+  footer .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap}
+  footer nav a{font-size:12.5px;text-decoration:none;color:#B7AF97}
+  footer nav a:hover{color:#fff}
+  footer .fine{font-size:11.5px;color:#8B8770;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.6}
+  .brand-foot{display:flex;align-items:center;gap:10px}
+  .brand-foot svg{width:22px;height:22px}
+  .brand-foot span{font-family:'Newsreader',serif;font-size:18px;color:#fff}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav"><div class="wrap nav-inner">
+  <div class="brand-group"><a class="back-link" href="/" title="Back to all demos">&larr; Demo Hotels</a><a class="brand" href="#top"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="20,2 24,15 37,15 26.5,23 30.5,36 20,28 9.5,36 13.5,23 3,15 16,15" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--accent)"></polygon></svg>
+  <span class="brand-word">STATLER <b>HELSINKI</b></span></a></div>
+  <nav class="links"><a href="#rooms">Rooms &amp; Suites</a><a href="#dining">Dining</a><a href="#wellness">Sauna &amp; Spa</a><a href="#events">Meetings &amp; Events</a><a href="#hours">Opening Hours</a><a href="#offers">Offers</a><a href="#policies">Policies &amp; FAQ</a><a href="#contact">Contact</a></nav>
+  <a class="btn btn-line nav-cta" href="#contact">Enquire</a>
+</div></header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" style="background-image:var(--img-hero)">
+  <svg class="hero-motif" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs><pattern id="star8" width="120" height="120" patternUnits="userSpaceOnUse"><g stroke="var(--star-line)" stroke-width="1" fill="none">
+    <polygon points="60,14 68,45 99,45 74,63 84,94 60,75 36,94 46,63 21,45 52,45"></polygon></g></pattern></defs>
+    <rect width="1200" height="640" fill="url(#star8)"></rect></svg>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Esplanadi · Helsinki, Finland</div>
+    <h1>Between the park<br><em>and the harbour.</em></h1>
+    <p class="hero-tag">The Statler, Helsinki occupies a restored 1912 Jugendstil bank on the Esplanadi — 190 rooms and suites over eight floors, five restaurants and bars, a rooftop bar above the South Harbour, and a Finnish sauna spa built into the old granite vaults.</p>
+    <div class="hero-ctas"><a class="btn btn-gold" href="#rooms">Explore Rooms &amp; Suites</a><a class="btn btn-ghost" href="#contact">Reservations</a></div>
+    <div class="facts-strip fig"><div><div class="num">190</div><div class="lbl">Rooms &amp; Suites</div></div><div><div class="num">5</div><div class="lbl">Restaurants &amp; Bars</div></div><div><div class="num">3</div><div class="lbl">Saunas</div></div><div><div class="num">2</div><div class="lbl">Min to Market Square</div></div></div>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview"><div class="wrap overview-grid">
+  <div>
+    <p class="eyebrow">The Hotel</p>
+    <h2 style="font-size:clamp(28px,3.6vw,38px);margin-bottom:16px">A 1912 granite bank, reopened as the Statler's Nordic home</h2>
+    <p>The Statler, Helsinki occupies the former Pohjola Merchant Bank, a granite-and-copper Jugendstil building completed in 1912 on Pohjoisesplanadi, facing the lime trees of Esplanadi Park. Reopened in 2025 as the Nordic home of Statler Hotels — sister to the Statler hotels across Europe, New York and Riyadh — its carved granite portal, stained-glass banking hall and bronze-gated vaults have been restored around 190 rooms and suites.</p><p>The hotel is two minutes on foot from Market Square and the South Harbour ferries to Suomenlinna, five minutes from Senate Square and Helsinki Cathedral, and ten minutes from the Design District, the Oodi library and Helsinki Central Station, with the airport train every ten minutes.</p>
+    <ul class="kicker-list"><li><span class="k">I.</span><span>The stained-glass banking hall, with its original 1912 granite columns, is now the lobby and Esplanadi Grill</span></li><li><span class="k">II.</span><span>The bank's granite vaults hold Löyly Spa — three saunas, an ice-cold plunge and the 18-metre Vault Pool</span></li><li><span class="k">III.</span><span>Lumo, on the eighth-floor copper roof, looks over the South Harbour to Suomenlinna</span></li></ul>
+  </div>
+  <div class="art-panel" style="background-image:url('https://images.unsplash.com/photo-1775728429123-834188fc608d?auto=format&fit=crop&w=1200&q=75')"><div class="art-cap">Helsinki Cathedral and the South Harbour skyline, a five-minute walk from the hotel</div></div>
+</div></section>
+
+<!-- ============ QUICK FACTS ============ -->
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">At a Glance</p>
+  <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:28px">At a Glance</h2>
+  <div class="infobar fig"><div class="cell"><div class="k">Address</div><div class="v">Pohjoisesplanadi 41, 00130 Helsinki, Finland</div></div><div class="cell"><div class="k">Phone</div><div class="v">+45 93 70 75 58</div></div><div class="cell"><div class="k">Reservations</div><div class="v">reservations@statlerhelsinki.com</div></div><div class="cell"><div class="k">Check-in</div><div class="v">3:00 PM</div></div><div class="cell"><div class="k">Check-out</div><div class="v">12:00 PM (noon)</div></div><div class="cell"><div class="k">Currency</div><div class="v">Euro (EUR) · rates incl. VAT</div></div><div class="cell"><div class="k">WiFi</div><div class="v">Complimentary throughout</div></div><div class="cell"><div class="k">Nearest airport</div><div class="v">Helsinki-Vantaa (HEL) — 30 min by train or car</div></div></div>
+</div></section>
+
+<!-- ============ ROOMS ============ -->
+<section id="rooms"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Accommodation</p><h2>Rooms &amp; Suites</h2><p>190 rooms and suites across eight floors. Rates shown are indicative nightly starting rates in Euros (EUR), including Finnish VAT, and vary by season.</p></div></div>
+  <div class="grid fig"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1724582586413-6b69e1c94a17?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Classic Room</h3><span class="tag">From €220</span></div>
+<p>Calm, light-filled rooms on the courtyard side with a queen bed in Finnish linen, birch-and-oak furniture by local makers and a heated-floor bathroom with rain shower and Lapland-sourced bath products.</p>
+<div class="meta"><span><b>View</b> Courtyard</span><span><b>Bed</b> Queen</span><span><b>Sleeps</b> 2</span><span>22 m² / 237 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1731336478850-6bce7235e320?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Superior Twin</h3><span class="tag">From €245</span></div>
+<p>The same quiet Nordic finish as the Classic, with two single beds that can be made up together — a favourite with colleagues and friends travelling together.</p>
+<div class="meta"><span><b>View</b> Courtyard or Mikonkatu</span><span><b>Bed</b> 2 Singles</span><span><b>Sleeps</b> 2</span><span>25 m² / 269 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1641133639375-f71c3c1220a1?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Deluxe Esplanadi Room</h3><span class="tag">From €285</span></div>
+<p>Tall original windows looking into the lime trees of Esplanadi Park, a reading chair with wool throw, Moccamaster coffee and a bathroom in grey Finnish granite with double vanity.</p>
+<div class="meta"><span><b>View</b> Esplanadi Park</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 2</span><span>30 m² / 323 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1757344454333-cc666252e596?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Family Room</h3><span class="tag">From €330</span></div>
+<p>A king bed plus a sofa bed or two bunks for children, with blackout blinds for the long summer nights and a welcome pack of Finnish picture books and Moomin treats.</p>
+<div class="meta"><span><b>View</b> Courtyard</span><span><b>Bed</b> King + sofa bed</span><span><b>Sleeps</b> 4</span><span>36 m² / 388 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1718717722247-26f4c6c09192?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Harbour View Room</h3><span class="tag">From €360</span></div>
+<p>Upper-floor corner rooms on floors 5–7 looking down the Esplanadi to Market Square, the cathedral dome and the South Harbour ferries.</p>
+<div class="meta"><span><b>View</b> South Harbour &amp; Cathedral</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 2</span><span>32 m² / 344 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1760072513376-67a46aab0fd1?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Statler Club Room</h3><span class="tag">From €420</span></div>
+<p>A Deluxe room on the seventh floor with access to the Statler Club Lounge — breakfast, all-day coffee and pulla, evening wines and Nordic small plates — plus a private sauna session each stay.</p>
+<div class="meta"><span><b>View</b> Esplanadi or Harbour</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 2</span><span>32 m² / 344 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Junior Suite</h3><span class="tag">From €520</span></div>
+<p>An open-plan suite with sitting area, sofa bed and dining table, walk-in wardrobe and a granite bathroom with deep tub. Club Lounge access included.</p>
+<div class="meta"><span><b>View</b> Esplanadi Park</span><span><b>Bed</b> King + sofa bed</span><span><b>Sleeps</b> 3</span><span>48 m² / 517 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1776763018821-8feeaeeee0a5?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Sauna Suite</h3><span class="tag">From €780</span></div>
+<p>A one-bedroom suite with its own private wood-panelled Finnish sauna and shower, a living room facing the harbour, and a dressing room. Birch whisks and post-sauna cider on arrival.</p>
+<div class="meta"><span><b>View</b> South Harbour</span><span><b>Bed</b> King</span><span><b>Sleeps</b> 3</span><span>70 m² / 753 sq ft</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Statler Penthouse</h3><span class="tag">From €3,200</span></div>
+<p>The whole of the eighth-floor tower: two bedrooms, a library, dining for eight, a private sauna and a roof terrace with 270° views over the harbour and Suomenlinna, with a dedicated butler and house car.</p>
+<div class="meta"><span><b>View</b> 270° Helsinki &amp; sea</span><span><b>Bed</b> 2 Kings</span><span><b>Sleeps</b> Up to 5</span><span>210 m² / 2,260 sq ft + terrace</span></div>
+</div></div>
+  <p style="margin-top:22px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">Statler Club Lounge</b> — 7th floor, for Statler Club Rooms, all suites and Statler Privé Gold/Platinum members. Breakfast 6:30–10:30 AM, all-day refreshments, evening wines and small plates 5:00–7:30 PM. Open 6:30 AM–10:00 PM daily.</p><p style="margin-top:22px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">In every room</b> — Complimentary WiFi, 50" smart TV with casting, Moccamaster coffee and tea, minibar, in-room safe, Finnish linen and wool throws, pillow menu, heated bathroom floors, blackout blinds, USB-C charging. Connecting and accessible rooms available.</p>
+</div></section>
+
+<!-- ============ DINING ============ -->
+<section class="alt" id="dining"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Dining</p><h2>Restaurants &amp; Bars</h2><p>Five restaurants and bars, from archipelago seafood to a cocktail bar in the old bank vault, plus a rooftop bar over the harbour.</p></div></div>
+  <div class="grid"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1571989569011-ff63072f08b0?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Esplanadi Grill</h3><span class="tag">All-day · Banking Hall</span></div>
+<p>Under the stained-glass skylight of the old banking hall: Nordic breakfast buffet, open-fire grill of Finnish beef, reindeer and Baltic herring, and a long weekend brunch.</p>
+<div class="hours"><div><span>Breakfast</span><b>6:30–10:30 AM (to 11:00 Sat–Sun)</b></div><div><span>Lunch</span><b>11:30 AM–3:00 PM</b></div><div><span>Dinner</span><b>5:30–10:30 PM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1754587488961-18b0dd2b3521?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Saaristo</h3><span class="tag">Archipelago Seafood</span></div>
+<p>Seafood from the Finnish archipelago — salmon soup, vendace, smoked whitefish, crayfish in August — served at zinc counters and banquettes facing the park.</p>
+<div class="hours"><div><span>Lunch</span><b>11:30 AM–2:30 PM, Mon–Fri</b></div><div><span>Dinner</span><b>5:00–10:30 PM, Mon–Sat</b></div><div><span>Sunday</span><b>Closed</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Kaamos</h3><span class="tag">Tasting Menu</span></div>
+<p>A twelve-seat chef's counter with a seasonal tasting menu foraged from Finnish forests, lakes and the Baltic, paired with Nordic natural wines. Booking essential.</p>
+<div class="hours"><div><span>Seatings</span><b>6:00 &amp; 8:30 PM, Tue–Sat</b></div><div><span>Sun–Mon</span><b>Closed</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1775582662806-2972d4878175?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Kahvila Statler</h3><span class="tag">Café &amp; Bakery</span></div>
+<p>Street-side café with Finnish coffee roasted in Helsinki, korvapuusti cinnamon buns baked every morning, Karelian pies, open sandwiches and takeaway picnics for the park.</p>
+<div class="hours"><div><span>Mon–Fri</span><b>7:00 AM–7:00 PM</b></div><div><span>Sat–Sun</span><b>8:00 AM–6:00 PM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Holvi Bar</h3><span class="tag">Cocktail Bar · The Vault</span></div>
+<p>Cocktail bar behind the bank's original 1912 bronze vault door: Finnish gin and Nordic botanicals, a long list of aquavits and live jazz on Fridays.</p>
+<div class="hours"><div><span>Sun–Wed</span><b>4:00 PM–12:00 AM</b></div><div><span>Thu–Sat</span><b>4:00 PM–2:00 AM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1461438820504-6d00ea0157a5?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Pankki Wine Room</h3><span class="tag">Wine Bar</span></div>
+<p>An intimate wine room in the old safe-deposit hall: 400 bins, Nordic cheeses and charcuterie, and weekly tastings of natural and Champagne growers.</p>
+<div class="hours"><div><span>Tue–Sat</span><b>5:00–11:30 PM</b></div><div><span>Sun–Mon</span><b>Closed</b></div></div>
+</div></div>
+  <div class="policy-grid" style="margin-top:34px"><div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px"><div class="mini-photo" style="background-image:url('https://images.unsplash.com/photo-1770021601385-af0bf0136762?auto=format&fit=crop&w=400&q=75')"></div><div><div class="qa" style="margin-top:0"><p class="q" style="margin-top:0">Lumo Rooftop Bar</p><p class="a">On the eighth-floor copper roof, looking over the South Harbour to Suomenlinna. Spritzes, Nordic small plates and midnight-sun sunsets in summer; glass-walled and heated with blankets in winter. Open 3:00 PM–12:00 AM daily (to 1:00 AM Fri–Sat).</p></div></div></div><div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px"><div><div class="qa" style="margin-top:0"><p class="q" style="margin-top:0">In-Room Dining</p><p class="a">Available 24 hours, with a Nordic breakfast menu 6:30–11:00 AM and a full all-day menu from Esplanadi Grill and Saaristo 11:00 AM–11:00 PM; a night menu runs 11:00 PM–6:30 AM.</p></div></div></div></div>
+</div></section>
+
+<!-- ============ WELLNESS ============ -->
+<section id="wellness"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Wellness</p><h2>Löyly Spa, Sauna &amp; Pool</h2><p>Finnish sauna culture in the bank's granite vaults — three saunas, a cold plunge, the Vault Pool, treatments and a 24-hour gym.</p></div></div>
+  <div class="grid"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1728404259075-209cfb5bb89c?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Löyly Sauna</h3><span class="tag">Lower Ground</span></div>
+<p>Three saunas — a traditional wood-burning sauna, a smoke sauna (Thu–Sun) and a gentle Finnish steam room — with an ice-cold plunge pool, birch whisks and a relaxation lounge.</p>
+<div class="hours"><div><span>Daily</span><b>7:00 AM–10:00 PM</b></div><div><span>Smoke sauna</span><b>Thu–Sun, 4:00–9:00 PM</b></div></div>
+<div class="meta"><span><b>Min. age</b> Children with an adult until 6:00 PM</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1558617320-e695f0d420de?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Vault Pool</h3><span class="tag">18 m</span></div>
+<p>An 18-metre pool lined in pale granite under the vaulted ceiling, with a warm jet pool and loungers.</p>
+<div class="hours"><div><span>Daily</span><b>6:30 AM–10:00 PM</b></div><div><span>Family swim</span><b>9:00 AM–12:00 PM &amp; 3:00–6:00 PM</b></div></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1649068618811-9f3547ef98fc?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Statler Fit</h3><span class="tag">24 hours</span></div>
+<p>Technogym cardio and strength, free weights, a yoga studio with daily classes and personal training by appointment.</p>
+<div class="hours"><div><span>Gym</span><b>24 hours (key-card)</b></div><div><span>Classes</span><b>7:00 AM &amp; 6:00 PM daily</b></div></div>
+</div></div>
+  <div class="grid" style="margin-top:22px"><div class="card">
+<div class="top"><h3>Löyly Spa Treatments</h3><span class="tag">6 treatment rooms</span></div>
+<p>Signature treatments include the Nordic Forest Ritual (sauna, birch scrub and massage), Lapland Cloudberry Facial and a Jet Lag Recovery massage.</p>
+<div class="hours"><div><span>Daily</span><b>9:00 AM–9:00 PM</b></div><div><span>Last treatment</span><b>8:00 PM</b></div></div>
+</div><div class="card">
+<div class="top"><h3>Sauna Etiquette</h3><span class="tag">Good to know</span></div>
+<p>Swimwear is required in the shared saunas; private sauna sessions (60 min, from €90 for two) can be booked through the spa or the Canary chat.</p>
+</div><div class="card">
+<div class="top"><h3>Winter Swimming</h3><span class="tag">Dec–Mar</span></div>
+<p>Guided trips to the Allas Sea Pool on the South Harbour for a traditional ice swim and sauna, Tue/Thu/Sat 8:00 AM, from €45.</p>
+</div></div>
+</div></section>
+
+<!-- ============ EVENTS ============ -->
+<section class="alt" id="events"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Meetings &amp; Events</p><h2>Meetings &amp; Events</h2><p>1,600 m² of event space in the restored bank, from the Esplanadi Ballroom to the rooftop terrace.</p></div></div>
+  <div class="grid two fig"><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1775346098928-cab0ac41b9a2?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Esplanadi Ballroom</h3><span class="tag">420 m²</span></div>
+<p>Pillarless, with 6-metre ceilings, original brass chandeliers and windows onto the park. Divides into two halls.</p>
+<div class="meta"><span><b>Up to</b> 400 reception / 260 banquet</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1764810815228-b7f9432eec5c?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>The Senate Room</h3><span class="tag">180 m²</span></div>
+<p>Former bank boardroom with oak panelling and daylight, ideal for conferences, product launches and private dinners.</p>
+<div class="meta"><span><b>Up to</b> 120 guests</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1777264935754-aa53096c2d68?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Meeting Rooms</h3><span class="tag">6 rooms</span></div>
+<p>The Suomenlinna, Kauppatori, Töölö, Kallio, Eira and Katajanokka rooms, with 4K displays and video-conferencing.</p>
+<div class="meta"><span><b>Sizes</b> 25–90 m² · 6–50 pax</span></div>
+</div><div class="card">
+<div class="card-photo" style="background-image:url('https://images.unsplash.com/photo-1493246318656-5bfd4cfb29b8?auto=format&fit=crop&w=900&q=75')"></div>
+<div class="top"><h3>Lumo Terrace</h3><span class="tag">220 m²</span></div>
+<p>Private rooftop terrace beside Lumo with harbour views; glass-walled and heated October to April.</p>
+<div class="meta"><span><b>Up to</b> 150 reception</span></div>
+</div></div>
+  <p style="margin-top:26px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">Weddings &amp; private events</b> — ceremonies in the Esplanadi Ballroom and on the Lumo Terrace, with a dedicated wedding team. Events office open Mon–Fri 9:00 AM–5:00 PM. Contact <b style="color:var(--ink)">+45 93 70 75 58</b> or <b style="color:var(--ink)">events@statlerhelsinki.com</b>.</p>
+</div></section>
+
+<!-- ============ OPENING HOURS ============ -->
+<section id="hours"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Good to Know</p><h2>Opening Hours</h2><p>Hours for every outlet and service at a glance. Holiday hours (Midsummer, Independence Day, Christmas) may vary — please check with the concierge.</p></div></div>
+  <div class="policy-grid fig"><div><div class="policy-row"><div class="k">Front desk &amp; concierge</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Bell desk &amp; luggage storage</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Valet parking</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Esplanadi Grill</div><div class="v">6:30 AM–10:30 PM daily</div></div>
+<div class="policy-row"><div class="k">Saaristo</div><div class="v">11:30 AM–2:30 PM (Mon–Fri) · 5:00–10:30 PM, Mon–Sat</div></div>
+<div class="policy-row"><div class="k">Kaamos</div><div class="v">6:00 &amp; 8:30 PM seatings, Tue–Sat</div></div>
+<div class="policy-row"><div class="k">Kahvila Statler</div><div class="v">7:00 AM–7:00 PM (Sat–Sun 8:00 AM–6:00 PM)</div></div>
+<div class="policy-row"><div class="k">Holvi Bar</div><div class="v">4:00 PM–12:00 AM (2:00 AM Thu–Sat)</div></div>
+<div class="policy-row"><div class="k">Pankki Wine Room</div><div class="v">5:00–11:30 PM, Tue–Sat</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Lumo Rooftop Bar</div><div class="v">3:00 PM–12:00 AM (1:00 AM Fri–Sat)</div></div></div><div><div class="policy-row"><div class="k">In-room dining</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Statler Club Lounge</div><div class="v">6:30 AM–10:00 PM daily</div></div>
+<div class="policy-row"><div class="k">Löyly Sauna</div><div class="v">7:00 AM–10:00 PM daily</div></div>
+<div class="policy-row"><div class="k">Löyly Spa treatments</div><div class="v">9:00 AM–9:00 PM daily</div></div>
+<div class="policy-row"><div class="k">The Vault Pool</div><div class="v">6:30 AM–10:00 PM daily</div></div>
+<div class="policy-row"><div class="k">Statler Fit</div><div class="v">24 hours</div></div>
+<div class="policy-row"><div class="k">Airport transfers</div><div class="v">24 hours, on request</div></div>
+<div class="policy-row"><div class="k">Gift shop — Statler &amp; Co.</div><div class="v">9:00 AM–8:00 PM daily</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Events office</div><div class="v">Mon–Fri 9:00 AM–5:00 PM</div></div></div></div>
+</div></section>
+
+<!-- ============ OFFERS ============ -->
+<section class="alt" id="offers"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Offers</p><h2>Packages &amp; Experiences</h2><p>Indicative rates as of November 2026, per night, subject to change and availability.</p></div></div>
+  <div class="grid fig"><div class="card">
+<div class="top"><h3>Helsinki Weekend</h3><span class="tag">From €260</span></div>
+<p>Two-night minimum, daily Nordic breakfast and a €50 dining credit at Saaristo.</p>
+</div><div class="card">
+<div class="top"><h3>Sauna &amp; Sea</h3><span class="tag">From €340</span></div>
+<p>A private sauna session for two, Löyly Forest Ritual for one and an Allas Sea Pool day pass.</p>
+</div><div class="card">
+<div class="top"><h3>Christmas in Helsinki</h3><span class="tag">From €310</span></div>
+<p>November–December: glögi on arrival, a Christmas Market guide and breakfast daily; Esplanadi lights from your window.</p>
+</div><div class="card">
+<div class="top"><h3>Stay Longer</h3><span class="tag">Save 20%</span></div>
+<p>Stay four nights or more and save 20% on the best available rate, with daily breakfast.</p>
+</div><div class="card">
+<div class="top"><h3>Archipelago Escape</h3><span class="tag">From €420</span></div>
+<p>May–September: a private boat to Suomenlinna and the outer islands with a seafood picnic from Saaristo.</p>
+</div><div class="card">
+<div class="top"><h3>Family in Helsinki</h3><span class="tag">From €350</span></div>
+<p>Family Room or connecting rooms, kids eat free at Esplanadi Grill, and tickets for Linnanmäki or the Helsinki Zoo.</p>
+</div></div>
+</div></section>
+
+<!-- ============ POLICIES & FAQ ============ -->
+<section id="policies"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow">Good to Know</p><h2>Policies &amp; FAQ</h2></div></div>
+  <div class="policy-grid fig">
+    <div><div class="policy-row"><div class="k">Check-in / Check-out</div><div class="v">3:00 PM / 12:00 PM</div></div>
+<div class="policy-row"><div class="k">Early check-in / late check-out</div><div class="v">From 10:00 AM / until 3:00 PM, subject to availability (€40)</div></div>
+<div class="policy-row"><div class="k">Minimum check-in age</div><div class="v">18</div></div>
+<div class="policy-row"><div class="k">Deposit at check-in</div><div class="v">Pre-authorisation of €100 per night for incidentals</div></div>
+<div class="policy-row"><div class="k">Cancellation (flexible)</div><div class="v">Free up to 24h before arrival (3:00 PM local time)</div></div>
+<div class="policy-row"><div class="k">Taxes</div><div class="v">Rates include Finnish VAT (14%); no city tax</div></div>
+<div class="policy-row"><div class="k">Pets</div><div class="v">Dogs welcome, €40 per night</div></div>
+<div class="policy-row"><div class="k">Smoking</div><div class="v">100% non-smoking; €300 cleaning fee</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Parking</div><div class="v">Valet only, €45 per 24h incl. EV charging</div></div></div>
+    <div class="qa"><p class="q" style="margin-top:0">Is breakfast included?</p><p class="a">Not by default. The Nordic breakfast buffet at Esplanadi Grill is €32; included with Statler Club rooms, suites and most packages.</p><p class="q">How do I get from the airport?</p><p class="a">The I/P commuter train runs from Helsinki-Vantaa to Central Station every 10 minutes (about 30 min, €4.10), then a 10-minute walk or tram. A house car can be arranged from €95.</p><p class="q">Does the hotel have a loyalty programme?</p><p class="a">Yes — Statler Privé (Silver, Gold, Platinum, Statler Elite), shared across all Statler hotels worldwide.</p><p class="q">Is the hotel accessible?</p><p class="a">Yes — step-free entrance on Mikonkatu, lifts to all floors and the spa, and 10 accessible rooms with roll-in showers. A hoist is available at the Vault Pool.</p><p class="q">How do I get to Suomenlinna?</p><p class="a">The public ferry leaves Market Square every 20–40 minutes, a two-minute walk from the hotel (15 min crossing, HSL ticket). The concierge can also arrange a private boat.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ CONTACT ============ -->
+<section class="alt" id="contact"><div class="wrap contact-grid">
+  <div>
+    <p class="eyebrow">Find Us</p>
+    <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:18px">Pohjoisesplanadi, Helsinki</h2>
+    <p>Pohjoisesplanadi 41, 00130 Helsinki, Finland — on the Esplanadi, two minutes from Market Square.</p>
+    <div class="policy-grid" style="grid-template-columns:1fr"><div><div class="policy-row"><div class="k">Phone</div><div class="v">+45 93 70 75 58</div></div>
+<div class="policy-row"><div class="k">Reservations</div><div class="v">reservations@statlerhelsinki.com</div></div>
+<div class="policy-row"><div class="k">Concierge</div><div class="v">concierge@statlerhelsinki.com</div></div>
+<div class="policy-row"><div class="k">Events &amp; Weddings</div><div class="v">events@statlerhelsinki.com</div></div>
+<div class="policy-row" style="border-bottom:none"><div class="k">Getting here</div><div class="v">Helsinki-Vantaa (HEL) 30 min · Central Station 10 min walk · Trams 2, 4, 5 &amp; 7</div></div></div></div>
+  </div>
+  <div class="map-panel" style="background-image:url('https://images.unsplash.com/photo-1557261651-a6beab93541f?auto=format&fit=crop&w=1200&q=75')">
+    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="rgba(255,255,255,.22)" stroke-width="1"><line x1="0" y1="80" x2="400" y2="80"></line><line x1="0" y1="170" x2="400" y2="170"></line><line x1="120" y1="0" x2="120" y2="300"></line><line x1="280" y1="0" x2="280" y2="300"></line></g>
+      <circle cx="200" cy="130" r="7" fill="var(--accent)"></circle><circle cx="200" cy="130" r="16" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".55"></circle>
+      <text x="212" y="126" font-family="sans-serif" font-size="11" fill="#F2ECDD">The Statler, Helsinki</text>
+      <text x="212" y="140" font-family="sans-serif" font-size="10" fill="#C9C2AC">Pohjoisesplanadi 41, Kaartinkaupunki</text>
+    </svg>
+  </div>
+</div></section>
+
+<!-- ============ FOOTER ============ -->
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div class="brand-foot"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="20,2 24,15 37,15 26.5,23 30.5,36 20,28 9.5,36 13.5,23 3,15 16,15" fill="none" stroke="#D99766" stroke-width="1.4"></polygon></svg><span>The Statler, Helsinki</span></div>
+    <nav><a href="#rooms">Rooms &amp; Suites</a><a href="#dining">Dining</a><a href="#wellness">Sauna &amp; Spa</a><a href="#events">Meetings &amp; Events</a><a href="#hours">Opening Hours</a><a href="#offers">Offers</a><a href="#policies">Policies &amp; FAQ</a><a href="#contact">Contact</a></nav>
+  </div>
+  <div class="fine">Fictional demonstration property, created for internal software testing (Canary
+    compendium / knowledge-base workflows). The Statler, Helsinki does not exist; all names, addresses, contact
+    details and rates on this page are invented and should never be treated as real. © 2026 Statler Hotels — demo content only.</div>
+</div></footer>
+
+<!-- Canary web chat widget (https://eu.canarytechnologies.com, slug demo-hotel-statler-nordics-dv28t) -->
+<script>
+(function (w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];js.id=o;js.src=f;js.async=1;fjs.parentNode.insertBefore(js,fjs)}(window,document,"script","CanaryChatWidget","https://static.cdn.canarytechnologies.com/dist/web-chat-loader.js"));CanaryChatWidget("init", { slug: "demo-hotel-statler-nordics-dv28t", chat_button_bottom_offset: 20 }, 'https://eu.canarytechnologies.com');
+</script>
+</body>
+</html>
