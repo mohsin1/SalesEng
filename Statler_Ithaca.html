@@ -116,6 +116,14 @@
   .brand-foot{display:flex;align-items:center;gap:10px}
   .brand-foot svg{width:22px;height:22px}
   .brand-foot span{font-family:'Newsreader',serif;font-size:18px;color:#fff}
+  .enquiry-form{max-width:640px;margin-top:34px}
+  .enquiry-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  @media (max-width:560px){ .enquiry-form .grid2{grid-template-columns:1fr} }
+  .enquiry-form .full{grid-column:1 / -1}
+  .enquiry-form label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .enquiry-form input{font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--border);border-radius:2px;background:var(--surface);color:var(--ink)}
+  .enquiry-form input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .enquiry-form .note{font-size:12px;margin-top:12px;color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -257,7 +265,46 @@
 <div class="top"><h3>Gorge Terrace</h3><span class="tag">Outdoor</span></div>
 <p>A landscaped terrace and lawn on the gorge rim under string lights, used for ceremonies, welcome receptions and Reunion parties. Tented option for spring and fall.</p>
 <div class="meta"><span><b>Size</b> 2,600 sq ft</span><span><b>Ceremony</b> 180</span><span><b>Reception</b> 200</span><span><b>Season</b> May to October</span></div>
-</div></div><p style="margin-top:26px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">Weddings & events office:</b> +1 (607) 555-0168, events@statlerithaca.com. Monday to Friday 9:00 AM to 5:30 PM, Saturday by appointment. Commencement, Reunion and Homecoming weekends book 12 to 18 months ahead; room blocks for those dates carry a 3-night minimum.</p></div></section>
+</div></div><p style="margin-top:26px;font-size:13.5px;max-width:80ch"><b style="color:var(--ink)">Weddings & events office:</b> +1 (607) 555-0168, events@statlerithaca.com. Monday to Friday 9:00 AM to 5:30 PM, Saturday by appointment. Commencement, Reunion and Homecoming weekends book 12 to 18 months ahead; room blocks for those dates carry a 3-night minimum.</p><div class="card enquiry-form">
+<p class="eyebrow" style="margin-bottom:4px">Request Information</p>
+<h3 style="margin-bottom:8px">Enquire About Your Event</h3>
+<p style="font-size:13.5px;margin-bottom:18px">Send your details to our events team and we'll follow up with availability and a quote.</p>
+<form id="enquiry-form" novalidate>
+  <div class="grid2">
+    <label class="full">Full name<input type="text" name="name" autocomplete="name" required></label>
+    <label>Email address<input type="email" name="email" autocomplete="email" required></label>
+    <label>Phone number<input type="tel" name="phone" autocomplete="tel" required></label>
+    <label>Arrival date<input type="date" name="arrival" required></label>
+    <label>Departure date<input type="date" name="departure" required></label>
+    <label>Nights of stay<input type="number" name="nights" min="1" required></label>
+  </div>
+  <button type="submit" class="btn btn-gold" style="margin-top:18px">Send Enquiry</button>
+  <p class="note">This opens your email app with these details filled in — just hit send.</p>
+</form>
+</div>
+<script>
+(function(){
+  var form = document.getElementById('enquiry-form');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    var subject = 'Event enquiry — The Statler, Ithaca';
+    var body = [
+      'Name: ' + form.name.value.trim(),
+      'Email: ' + form.email.value.trim(),
+      'Phone: ' + form.phone.value.trim(),
+      'Arrival date: ' + form.arrival.value,
+      'Departure date: ' + form.departure.value,
+      'Nights of stay: ' + form.nights.value.trim()
+    ].join('\n');
+    window.location.href = 'mailto:statler-hotel@sales-agent.us.canarytechnologies.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+</div></section>
 <section id="hours"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Good to Know</p><h2>Opening Hours</h2><p>Every outlet and service in one place. Seasonal hours apply to The Overlook and the Gorge Trail Desk.</p></div></div><div class="policy-grid fig"><div><div class="policy-row"><div class="k">Front Desk</div><div class="v">24 hours</div></div>
 <div class="policy-row"><div class="k">Concierge</div><div class="v">Daily 7:00 AM to 10:00 PM</div></div>
 <div class="policy-row"><div class="k">Valet parking</div><div class="v">24 hours</div></div>
